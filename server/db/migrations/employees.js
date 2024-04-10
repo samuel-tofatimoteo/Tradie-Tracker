@@ -9,7 +9,6 @@ export async function up(knex) {
     table.string('email')
     table.string('phone')
     table.integer('rating')
-    table.integer('rating')
     table.integer('company_id').references('companies.id')
   })
 }
