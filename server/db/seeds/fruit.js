@@ -1,10 +1,10 @@
 export async function seed(knex) {
   // Deletes ALL existing entries
-  await knex('fruit').del()
+  await knex('jobs').del()
 
   // Inserts seed entries
-  await knex('fruit').insert([
-    { id: 1, name: 'banana' },
+  await knex('jobs').insert([
+    {},
     { id: 2, name: 'apple' },
     { id: 3, name: 'feijoa' },
   ])
