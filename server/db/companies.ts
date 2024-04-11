@@ -4,9 +4,10 @@ import Knex from 'knex'
 
 const db = connection
 
-export async function getCompJobs() {
-  return await db('jobs').where('managers_id')
+export async function getAllCompanies() {
+  return await db('companies').select()
 }
-export async function addCompJobs() {
-  return await db('jobs').insert('addCompJobs')
+
+export async function getCompById(id: number) {
+  return await db('companies').where(id).select().first()
 }
