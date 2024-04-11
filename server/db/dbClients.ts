@@ -9,7 +9,7 @@ export async function addClient(clientSignUp: Client): Promise<Client> {
 }
 
 // Client account profile page
-export async function getClientById(id: number) {
+export async function getClientById(id: number): Promise<Client> {
   return await db('clients').where({ id }).select().first()
 }
 
@@ -24,4 +24,9 @@ export async function updateClient(
 // Client delete account
 export async function delClient(id: number) {
   return await db('clients').where({ id }).del()
+}
+
+// Show all Clients for managers/companies
+export async function getAllClients() {
+  return await db('clients').select()
 }
