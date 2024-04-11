@@ -8,17 +8,16 @@ const db = connection
 export async function getAllCompanies() {
   return await db('companies').select()
 }
-
-export async function getCompById(id: number) {
-  return await db('companies').where(id).select().first()
+export async function getCompJobsById(id: number) {
+  const company = await db('companies').select().first().where(id)
+  return company as Companies
+}
+export async function addCompJobs() {
+  return await db('jobs').insert('addCompJobs')
 }
 export async function deleteCompJobs() {
   return await db('jobs').del()
 }
 export async function updateCompJobs() {
   return await db('jobs').update('updateJobs')
-}
-export async function getCompJobsById(id: number | string) {
-  const company = await db('companies').select().first().where({ id })
-  return company as Companies
 }
