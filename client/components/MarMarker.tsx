@@ -1,9 +1,4 @@
 import React, { useEffect } from 'react'
-// import { google } from '@types/googlemaps' - it breaks everything
-// /// <reference types="@types/googlemaps" />
-
-// import { Map, Marker } from '@types/googlemaps'
-// import { MarkerClusterer } from '@googlemaps/markerclusterer'
 
 interface Position {
   lat: number
@@ -47,11 +42,10 @@ const MapMarker: React.FC = () => {
         document.getElementById('map') as HTMLElement,
         {
           zoom: 4,
-          center: locations[0], // 맵의 중심을 첫 번째 위치로 설정
+          center: locations[0],
         },
       )
 
-      // 각 위치에 마커 추가
       locations.forEach((location, index) => {
         new google.maps.Marker({
           position: location,
@@ -64,10 +58,7 @@ const MapMarker: React.FC = () => {
     initMap()
   }, [])
 
-  // const key = process.env.REACT_APP_MAP_KEY
-  // it didn't work because it's for node but it's needed from client side so use VITE and import.meta
   const key = import.meta.env.VITE_MAP_API_KEY
-  // Load Google Maps API script dynamically
   const loadGoogleMaps = () => {
     return new Promise<void>((resolve, reject) => {
       const script = document.createElement('script')
