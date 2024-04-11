@@ -9,8 +9,8 @@ export async function addClient(clientSignUp: Client): Promise<Client> {
 }
 
 // Client account profile page
-export async function getClientById(id: number): Promise<Client> {
-  return await db('clients').where(id).select().first()
+export async function getClientById(id: number) {
+  return await db('clients').where({ id }).select().first()
 }
 
 // Client account edit profile page
@@ -18,10 +18,10 @@ export async function updateClient(
   id: number,
   updateData: Clients,
 ): Promise<Client> {
-  return await db('clients').where(id).update(updateData)
+  return await db('clients').where({ id }).update(updateData)
 }
 
 // Client delete account
 export async function delClient(id: number) {
-  return await db('clients').where(id).del()
+  return await db('clients').where({ id }).del()
 }

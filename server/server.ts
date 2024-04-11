@@ -3,7 +3,7 @@ import * as Path from 'node:path'
 
 import employeesRouter from './routes/employees'
 import companiesRouter from './routes/companies'
-import clientRouter from './routes/client'
+import clientRouter from './routes/clients'
 
 const server = express()
 
