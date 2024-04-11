@@ -4,14 +4,23 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { getFruits } from '../apis/fruits.ts'
+import { JobReview } from '../../models/jobs.ts'
+
+import * as api from '../apis/jobs.ts'
 
 export function useJobs() {
-  const query = useQuery({ queryKey: ['jobs'], queryFn: getFruits })
+  const query = useQuery({ queryKey: ['jobs'], queryFn: api.getJobs })
   return {
     ...query,
-    // Extra queries go here e.g. addFruit: useAddFruit()
   }
+}
+
+export function useAddReview() {
+  const client = useQueryClient()
+  return useMutation({
+    mutationFn: (input: JobReview) => api.addReview(input.review, input.data),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
+  })
 }
 
 // export function useFruitsMutation<TData = unknown, TVariables = unknown>(
