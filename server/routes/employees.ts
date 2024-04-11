@@ -1,5 +1,5 @@
 import express from 'express'
-import * as db from '../db/dbEmployees'
+import * as db from '../db/employees'
 
 const router = express.Router()
 
