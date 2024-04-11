@@ -2,7 +2,7 @@ import express from 'express'
 import * as Path from 'node:path'
 
 import employeesRouter from './routes/employees'
-import companiesRouter from './routes/companies'
+import jobsRouter from './routes/jobs'
 import clientRouter from './routes/clients'
 
 const server = express()
@@ -10,7 +10,7 @@ const server = express()
 server.use(express.json())
 
 server.use('/api/v1/employees', employeesRouter)
-server.use('/api/v1/companies', companiesRouter)
+server.use('/api/v1/jobs', jobsRouter)
 server.use('/api/v1/clients', clientRouter)
 
 if (process.env.NODE_ENV === 'production') {

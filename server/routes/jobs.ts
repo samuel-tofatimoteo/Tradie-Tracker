@@ -1,32 +1,37 @@
 import express from 'express'
-import * as db from '../db/dbEmployees'
-
+import * as db from '../db/jobs'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-  const data = await db.getCompJobs()
+  const data = await db.getJobs()
   res.json(data)
 })
 
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  const data = db.getCompJobsById(id)
-  res.json(data)
+  try {
+    const data = await db.getJobsById(id)
+    res.json(data)
+  } catch (e) {
+    console.log(e)
+  }
 })
 
 router.patch('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    await db.updateCompJobs(id, req.body)
+    await db.updateJobs(id, req.body)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
     res.sendStatus(500)
   }
 })
+
 router.post('/', async (req, res) => {
   try {
-    await db.addCompJobs(req.body)
+    const data = req.body
+    await db.addJobs(data)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
@@ -36,7 +41,7 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    await db.deleteCompJobs(id)
+    await db.deleteJobs(id)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
