@@ -1,4 +1,5 @@
 import connection from './connection'
+import { Job, Jobs } from '../../models/jobs'
 
 const db = connection
 
@@ -8,12 +9,12 @@ export async function getJobs() {
 export async function getJobsById(id: number) {
   return await db('jobs').select().where({ id }).first()
 }
-export async function addJobs() {
-  return await db('jobs').insert({})
+export async function addJobs(data: Job) {
+  return await db('jobs').insert(data)
 }
 export async function deleteJobs(id: number) {
   return await db('jobs').where('id', id).del()
 }
-export async function updateJobs(id: number) {
-  return await db('jobs').where('id', id).update({})
+export async function updateJobs(id: number, data: Jobs) {
+  return await db('jobs').where('id', id).update(data)
 }

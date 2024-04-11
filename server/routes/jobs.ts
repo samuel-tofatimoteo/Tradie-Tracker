@@ -9,18 +9,18 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
-  console.log(id)
-  const data = db.getJobsById(id)
-  console.log(typeof data)
-  console.log(data)
-
-  res.json(data)
+  try {
+    const data = await db.getJobsById(id)
+    res.json(data)
+  } catch (e) {
+    console.log(e)
+  }
 })
 
 router.patch('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    await db.updateJobs(id)
+    await db.updateJobs(id, req.body)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
@@ -30,7 +30,8 @@ router.patch('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    await db.addJobs()
+    const data = req.body
+    await db.addJobs(data)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
