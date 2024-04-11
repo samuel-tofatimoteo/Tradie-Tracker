@@ -6,7 +6,6 @@ export interface Jobs {
   time: string
   complete: false
   price: number
-  review: string
   worked_hours: number
   employee_id: number
   client_id: number
@@ -15,4 +14,9 @@ export interface Jobs {
 
 export interface Job extends Jobs {
   id: number
+}
+
+export interface JobReview {
+  review: string
+  data: Job
 }

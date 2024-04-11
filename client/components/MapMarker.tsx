@@ -71,7 +71,7 @@ const MapMarker: React.FC = () => {
     })
   }
 
-  return <div id="map" style={{ width: '100%', height: '400px' }}></div>
+  return <div id="map" style={{ width: '500px', height: '500px' }}></div>
 }
 
 export default MapMarker

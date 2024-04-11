@@ -5,3 +5,7 @@
 button {
   border: 1px solid black;
 }
+
+#map {
+  float: right;
+}
