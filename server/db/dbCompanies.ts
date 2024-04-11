@@ -11,11 +11,11 @@ export async function getCompJobsById(id: number) {
   return company
 }
 export async function addCompJobs() {
-  return await db('jobs').insert('addCompJobs')
+  return await db('jobs').insert({})
 }
 export async function deleteCompJobs(id: number) {
   return await db('jobs').where('id', id).del()
 }
 export async function updateCompJobs(id: number) {
-  return await db('jobs').where('id', id).update('updateJobs')
+  return await db('jobs').where('id', id).update({})
 }
