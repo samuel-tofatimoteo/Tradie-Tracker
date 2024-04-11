@@ -1,5 +1,4 @@
-import { useJobs } from '../hooks/useJobs'
-import MapMarker from './MarMarker'
+import MapMarker from './MapMarker'
 
 function JobsList() {
   const jobs = [
@@ -23,7 +22,7 @@ function JobsList() {
       title: 'title',
       description: 'something',
       location: '',
-      date: '11 July 2024',
+      date: 'fake date data',
       time: '10:00',
       complete: true,
       price: 100,
