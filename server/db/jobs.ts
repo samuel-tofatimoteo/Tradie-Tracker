@@ -21,7 +21,7 @@ export async function updateManagersJob(
     .update(data)
 }
 
-export async function getJobsById(id: number) {
+export async function getAllJobsByManager(id: number) {
   return await db('jobs').select().where('manager_id', id)
 }
 export async function addJobs(data: Jobs) {
@@ -32,4 +32,19 @@ export async function deleteJobs(id: number) {
 }
 export async function updateJobs(id: number, data: Jobs) {
   return await db('jobs').where('id', id).update(data)
+}
+//employees
+export async function getJobByEmpId(id: number) {
+  return await db('jobs').select().where('employee_id', id)
+}
+
+export async function updateJobByEmpId(
+  employeeId: number,
+  jobId: number,
+  data: Jobs,
+) {
+  return await db('jobs')
+    .where('employee_id', employeeId)
+    .where('id', jobId)
+    .update(data)
 }
