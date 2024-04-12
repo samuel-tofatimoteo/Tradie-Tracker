@@ -1,14 +1,25 @@
+import { Employees } from '../../models/employees'
 import { Jobs } from '../../models/jobs'
 import connection from './connection'
 
 const db = connection
 
-export async function getEmployeesJobs() {
-  return await db('jobs').where('employees_id').select()
-}
-export async function getEmployeeJobById(id: number) {
+// Show All employees jobs
+export async function getEmployeeJobs(id: number) {
   return await db('jobs').select().where('employee_id', id).first()
 }
-export async function updateJobs(id: number, data: Jobs) {
+
+// Add review and hours after job (After manager has created job)
+export async function updateEmployeesJob(id: number, data: Jobs) {
   return await db('jobs').where('employee_id', id).update(data)
+}
+
+// See employee Profile
+export async function getEmployeesDetails(id: number) {
+  return await db('employees').select().where({ id }).first()
+}
+
+// Employee can edit Profile
+export async function updateEmployeesDetails(id: number, data: Employees) {
+  return await db('employees').where({ id }).update(data)
 }
