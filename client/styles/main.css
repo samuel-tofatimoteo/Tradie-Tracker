@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 button {
   border: 1px solid black;
 }
@@ -9,3 +11,64 @@ button {
 #map {
   float: right;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+}
+
+link{
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------- */
+/* Welcome page */
+/* ----------------------------------------------------- */
+/* heading container */
+.header{
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 6rem;
+}
+/* subtitle */
+.welcome-text{
+  font-size: 1.5rem;
+  padding-left: 9.6rem;
+}
+/* I am text */
+.I-am-text{
+  font-size: 2rem;
+  margin-bottom: 4rem;
+
+}
+/* employee+manager btn SIMILARITIES */
+.login-button{
+  padding: 3.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  border-radius: 1rem;
+  color: white;
+  border: 0.125rem solid black;
+}
+/* manager btn */
+.manager{
+  background-color: #6BA0D6;
+  margin-right: 5rem;
+}
+.manager:hover{
+  background-color:  #80b7ef;
+}
+/* employee btn */
+.employee{
+  background-color: #6AB76A;
+  margin-left: 5rem;
+}
+.employee:hover{
+  background-color: #76ce76;
+}
+
+
