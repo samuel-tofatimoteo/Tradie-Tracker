@@ -5,14 +5,18 @@ import {
   MutationFunction,
 } from '@tanstack/react-query'
 import { JobReview } from '../../models/jobs.ts'
-
+import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
 export function useJobs() {
-  const query = useQuery({ queryKey: ['jobs'], queryFn: api.getJobs })
-  return {
-    ...query,
-  }
+  return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
+}
+
+export function useJobsById() {
+  return useQuery({
+    queryKey: ['jobs'],
+    queryFn: (id: number) => api.getJobsById(id),
+  })
 }
 
 export function useAddReview() {
