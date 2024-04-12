@@ -22,8 +22,11 @@ function JobsList() {
           <ul key="jobs">
             <li key={job.id}>
               {job.title}, {job.date}, {job.time}, {job.location}
+              {/* needs onclick to show detail of the job */}
+              <button key={job.id}>show more</button>
+              {/* links to edit page for each job */}
               <Link to={`/jobs/manager/${job.id}`}>
-                <button key={job.id}>job detail</button>
+                <button key={job.id}>edit job detail</button>
               </Link>
               <button key={job.employee_id}>assign employee</button>
             </li>
