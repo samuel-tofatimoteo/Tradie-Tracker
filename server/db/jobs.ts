@@ -3,13 +3,28 @@ import { Job, Jobs } from '../../models/jobs'
 
 const db = connection
 
-export async function getJobs() {
-  return await db('jobs').select()
+export async function getManagersJob(managerId: number, jobId: number) {
+  return await db('jobs')
+    .where('manager_id', managerId)
+    .where('id', jobId)
+    .select()
 }
+
+export async function updateManagersJob(
+  managerId: number,
+  jobId: number,
+  data: Jobs,
+) {
+  return await db('jobs')
+    .where('manager_id', managerId)
+    .where('id', jobId)
+    .update(data)
+}
+
 export async function getJobsById(id: number) {
-  return await db('jobs').select().where({ id }).first()
+  return await db('jobs').select().where('manager_id', id)
 }
-export async function addJobs(data: Job) {
+export async function addJobs(data: Jobs) {
   return await db('jobs').insert(data)
 }
 export async function deleteJobs(id: number) {
