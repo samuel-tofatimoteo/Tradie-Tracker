@@ -2,6 +2,7 @@ import MapMarker from './MapMarker'
 import { useJobs } from '../hooks/useJobs'
 import { getJobs } from '../apis/jobs'
 import { Job } from '../../models/jobs'
+import { Link } from 'react-router-dom'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
@@ -21,6 +22,9 @@ function JobsList() {
           <ul key="jobs">
             <li key={job.id}>
               {job.title}, {job.date}, {job.time}, {job.location}
+              <Link to={`/jobs/manager/${job.id}`}>
+                <button key={job.id}>job detail</button>
+              </Link>
               <button key={job.employee_id}>assign employee</button>
             </li>
           </ul>
