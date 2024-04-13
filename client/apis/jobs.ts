@@ -9,9 +9,11 @@ export async function getJobs(): Promise<Job[]> {
   return res.body as Job[]
 }
 
-export async function getJobsById(id: number): Promise<Job[]> {
+export async function getJobsById(id: number) {
   const res = await request.get(`${rootUrl}/${id}`)
-  return res.body as Job[]
+  console.log(res)
+  console.log(res.body)
+  return res.body
 }
 
 export function addReview(review: string, data: Job) {

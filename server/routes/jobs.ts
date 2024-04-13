@@ -2,12 +2,12 @@ import express from 'express'
 import * as db from '../db/jobs'
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.get('/manager', async (req, res) => {
   const data = await db.getJobs()
   res.json(data)
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/manager/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
     const data = await db.getJobsById(id)
