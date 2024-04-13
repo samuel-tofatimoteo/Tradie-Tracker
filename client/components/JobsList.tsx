@@ -1,7 +1,5 @@
 import MapMarker from './MapMarker'
 import { useJobs } from '../hooks/useJobs'
-import { getJobs } from '../apis/jobs'
-import { Job } from '../../models/jobs'
 import { Link } from 'react-router-dom'
 
 function JobsList() {

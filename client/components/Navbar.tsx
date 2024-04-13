@@ -1,4 +1,5 @@
 function Navbar() {
+  // const navColor = manager ? 'bg-color-green' : 'bg-color-blue'
   return (
     <>
       <div className="bg-color">
