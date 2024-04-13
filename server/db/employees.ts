@@ -17,7 +17,7 @@ const db = connection
 //manager can see all the employees that the manager created
 //it's a join table, looking at manager_id in the jobs table, and the employee id in the employee table.
 export async function getAllEmpByManagerId(managerId: number) {
-  console.log('Received managerId:', managerId)
+  console.log('managerId:', managerId)
   return await db('employees')
     .select()
     .whereExists(function () {
@@ -25,6 +25,19 @@ export async function getAllEmpByManagerId(managerId: number) {
         .from('jobs')
         .whereRaw('jobs.employee_id = employees.id')
         .andWhere('jobs.manager_id', managerId)
+    })
+}
+//manager can see the employee details
+export async function getEmpByManagerId(managerId: number, employeeId: number) {
+  console.log('managerId:', managerId)
+  return await db('employees')
+    .select()
+    .whereExists(function () {
+      this.select('*')
+        .from('jobs')
+        .whereRaw('jobs.employee_id = employees.id')
+        .andWhere('jobs.manager_id', managerId)
+        .andWhere('jobs.employee_id', employeeId)
     })
 }
 
@@ -45,4 +58,33 @@ export async function updateEmpByManagerId(
   return await db('employees')
     .where('id', employeeId) // Filter based on employee ID only
     .update(data)
+}
+//manager can add employee
+export async function addEmpByManagerId(
+  managerId: number,
+  employeeId: number,
+  employeeData: Employees,
+) {
+  console.log(
+    'new employee',
+    managerId,
+    'employee ID:',
+    employeeId,
+    'data:',
+    employeeData,
+  )
+
+  return await db('employees').insert({
+    ...employeeData,
+  })
+}
+
+export async function deleteEmpByManagerId(
+  managerId: number,
+  employeeId: number,
+) {
+  console.log('manager:', managerId, 'employee:', employeeId)
+  return await db('employees')
+    .where('id', employeeId) // Filter based on employee ID only
+    .delete()
 }
