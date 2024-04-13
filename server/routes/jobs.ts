@@ -28,7 +28,7 @@ router.patch('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/create-job/manager', async (req, res) => {
   try {
     const data = req.body
     await db.addJobs(data)
