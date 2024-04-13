@@ -20,8 +20,12 @@ export async function getAllEmpByManagerId(managerId: number) {
   console.log('Received managerId:', managerId)
   return await db('employees')
     .select()
-    .join('jobs', 'employees.id', 'jobs.employee_id')
-    .where('jobs.manager_id', managerId)
+    .whereExists(function () {
+      this.select('*')
+        .from('jobs')
+        .whereRaw('jobs.employee_id = employees.id')
+        .andWhere('jobs.manager_id', managerId)
+    })
 }
 
 // Employee can edit Profile
