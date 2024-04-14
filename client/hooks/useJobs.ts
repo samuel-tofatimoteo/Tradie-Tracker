@@ -12,10 +12,10 @@ export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
 
-export function useJobsById() {
+export function useJobsById(id: number) {
   return useQuery({
-    queryKey: ['jobs'],
-    queryFn: (id: number) => api.getJobsById(id),
+    queryKey: ['jobs', id],
+    queryFn: () => api.getJobsById(id),
   })
 }
 
