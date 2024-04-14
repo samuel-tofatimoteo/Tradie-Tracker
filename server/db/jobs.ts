@@ -3,6 +3,9 @@ import { Job, Jobs } from '../../models/jobs'
 
 const db = connection
 
+export async function getJobs() {
+  return await db('jobs')
+}
 export async function getManagersJob(managerId: number, jobId: number) {
   return await db('jobs')
     .where('manager_id', managerId)
