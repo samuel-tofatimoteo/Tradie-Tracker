@@ -1,6 +1,5 @@
-import { useEffect } from 'react'
 import { useJobsById } from '../hooks/useJobs'
-import { getJobsById } from '../apis/jobs'
+
 import { useParams } from 'react-router-dom'
 import React from 'react'
 
