@@ -4,7 +4,7 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { JobReview } from '../../models/jobs.ts'
+import { Job, JobData, JobReview, Jobs } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
@@ -12,13 +12,20 @@ export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
 
-export function useJobsById(id: number) {
+export function useJobById(id: number) {
   return useQuery({
     queryKey: ['jobs', id],
-    queryFn: () => api.getJobsById(id),
+    queryFn: () => api.getJobById(id),
   })
 }
 
+export function useEditJobById() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (input: JobData) => api.editJobById(input.id, input.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
+  })
+}
 export function useAddReview() {
   const client = useQueryClient()
   return useMutation({

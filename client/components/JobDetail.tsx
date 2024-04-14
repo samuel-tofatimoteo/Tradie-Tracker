@@ -1,19 +1,67 @@
-import { useEffect } from 'react'
-import { useJobsById } from '../hooks/useJobs'
-import { getJobsById } from '../apis/jobs'
-import { useParams } from 'react-router-dom'
-import React from 'react'
+import { useState } from 'react'
+import { useEditJobById, useJobById } from '../hooks/useJobs'
+
+import { useParams, useSearchParams } from 'react-router-dom'
 
 function JobDetail() {
   const id = Number(useParams().id)
 
-  const { data } = useJobsById(id)
+  const { data } = useJobById(id)
+  const mutation = useEditJobById()
+  const [formState, setFormState] = useState('')
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.currentTarget
+  }
   if (data) {
     return (
       <>
-        {`job title: ${data.title}, due date: ${data.date}, address: ${data.location}, description: ${data.description}
-        review: ${data.review}, quotation: ${data.price}`}
+        <form>
+          Job Title:{' '}
+          <input
+            onChange={handleChange}
+            value={formState}
+            type="text"
+            name={data.id}
+            placeholder={data.title}
+          />
+          <br></br>
+          Due Date:
+          <input
+            onChange={handleChange}
+            value={formState}
+            type="datetime-local"
+            name={data.id}
+            placeholder={data.date}
+          />
+          <br></br>
+          Location:
+          <input
+            onChange={handleChange}
+            value={formState}
+            type="text"
+            name={data.id}
+            placeholder={data.location}
+          />
+          <br></br>
+          Description:
+          <input
+            onChange={handleChange}
+            value={formState}
+            type="text"
+            name={data.id}
+            placeholder={data.description}
+          />
+          <br></br>
+          Quotation:
+          <input
+            onChange={handleChange}
+            value={formState}
+            type="text"
+            name={data.id}
+            placeholder={data.price}
+          />
+        </form>
       </>
     )
   }
