@@ -1,6 +1,8 @@
 import MapMarker from './MapMarker'
 import { useJobs } from '../hooks/useJobs'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import ToggleButton from './ToggleButton'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
@@ -21,10 +23,10 @@ function JobsList() {
             <li key={job.id}>
               {job.title}, {job.date}, {job.time}, {job.location}
               {/* needs onclick to show detail of the job */}
-              <button key={job.id}>show more</button>
+              <ToggleButton job={job} />
               {/* links to edit page for each job */}
               <Link to={`/jobs/manager/${job.id}`}>
-                <button key={job.id}>edit job detail</button>
+                <button>edit job detail</button>
               </Link>
               <button key={job.employee_id}>assign employee</button>
             </li>
