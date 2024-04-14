@@ -9,10 +9,8 @@ export async function getJobs(): Promise<Job[]> {
   return res.body as Job[]
 }
 
-export async function getJobsById(id: number) {
+export async function getJobsById(id: number): Promise<Job[]> {
   const res = await request.get(`${rootUrl}/${id}`)
-  console.log(res)
-  console.log(res.body)
   return res.body
 }
 
