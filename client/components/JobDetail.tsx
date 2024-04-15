@@ -10,44 +10,24 @@ function JobDetail() {
   console.log(data)
 
   const mutation = useEditJobById()
-  const [formState, setFormState] = useState(
-    // '',
-    {
-      // id: id,
-      title: '',
-      description: '',
-      location: '',
-      date: '',
-      time: '',
-      // complete: data?.complete,
-      price: 0,
-      // worked_hours: data?.worked_hours,
-      // employee_id: data?.employee_id,
-      // client_id: data?.client_id,
-      // manager_id: data?.manager_id,
-    },
-  )
-  // )
+  const [formState, setFormState] = useState({
+    id: id,
+    title: '',
+    description: '',
+    location: '',
+    date: '',
+    time: '',
+    price: 0,
+    complete: false,
+    worked_hours: 0,
+    employee_id: 0,
+    client_id: 0,
+    manager_id: 0,
+  })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
-    // const input = {
-    //   id: id,
-    //   title: data?.title,
-    //   description: data?.description,
-    //   location: data?.location,
-    //   date: data?.date,
-    //   time: data?.time,
-    //   // complete: data?.complete,
-    //   price: data?.price,
-    //   // worked_hours: data?.worked_hours,
-    //   // employee_id: data?.employee_id,
-    //   // client_id: data?.client_id,
-    //   // manager_id: data?.manager_id,
-    // }
-    // setFormState({ id, data: { ...input, [name]: value } })
     setFormState((prev) => ({ ...prev, [name]: value }))
-    // setFormState(e.target.value)
   }
 
   if (isLoading) {
@@ -61,10 +41,11 @@ function JobDetail() {
     e.preventDefault()
     mutation.mutate(formState)
   }
+
   if (data) {
     return (
       <>
-        <form>
+        <form onSubmit={handleClick}>
           Job Title:{' '}
           <input
             id="title"
@@ -79,7 +60,8 @@ function JobDetail() {
           <input
             onChange={handleChange}
             value={formState.date}
-            type="datetime-local"
+            // type="datetime-local"
+            type="text"
             name="date"
             placeholder={data.date}
           />
@@ -110,8 +92,8 @@ function JobDetail() {
             name="price"
             placeholder={data.price}
           />
+          <button>save</button>
         </form>
-        <button onClick={handleClick}>save</button>
       </>
     )
   }
