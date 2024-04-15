@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { useEditJobById, useJobById } from '../hooks/useJobs'
+import { useEditJobById, useJobById } from '../../hooks/useJobs'
 
 import { useParams } from 'react-router-dom'
 

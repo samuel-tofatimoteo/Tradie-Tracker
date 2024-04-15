@@ -1,9 +1,9 @@
-import MapMarker from './MapMarker'
-import { useJobs } from '../hooks/useJobs'
+import MapMarker from '../MapMarker'
+import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
 import plus from '../../public/images/plus.svg'
 import { useState } from 'react'
-import ToggleButton from './ToggleButton'
+import ToggleButton from '../ToggleButton'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()

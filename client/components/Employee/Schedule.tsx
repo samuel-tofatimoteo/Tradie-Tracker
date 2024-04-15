@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react'
-import MapMarker from './MapMarker'
-import { useAddReview, useAllJobsByEmpId } from '../hooks/useJobs'
+import MapMarker from '../MapMarker'
+import { useAddReview, useAllJobsByEmpId } from '../../hooks/useJobs'
 import { useParams } from 'react-router-dom'
 
 function Schedule() {
