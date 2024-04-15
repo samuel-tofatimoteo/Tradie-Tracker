@@ -1,7 +1,7 @@
 import MapMarker from '../MapMarker'
 import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
-import plus from '../../../public/images/plus.svg'
+import plus from '/images/plus.svg'
 import ToggleButton from '../ToggleButton'
 
 function JobsList() {
