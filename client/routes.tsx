@@ -4,7 +4,7 @@ import JobsList from './components/JobsList.tsx'
 import Schedule from './components/Schedule.tsx'
 import WelcomePage from './components/WelcomePage.tsx'
 import JobDetail from './components/JobDetail.tsx'
-import CreateJob from './components/CreateJob.tsx'
+import CreateJob from './components/Manager/CreateJob.tsx'
 
 export default createRoutesFromElements(
   <Route path="/" element={<App />}>
