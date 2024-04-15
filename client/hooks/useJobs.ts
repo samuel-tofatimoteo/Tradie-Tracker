@@ -4,10 +4,20 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { Job, JobData, JobReview, Jobs } from '../../models/jobs.ts'
+import { Job, JobReview } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
+// Employee Hooks
+
+export function useAllJobsByEmpId(id: number) {
+  return useQuery({
+    queryKey: ['jobs', id],
+    queryFn: () => api.getAllJobsByEmpId(id),
+  })
+}
+
+//OLD STUFF
 export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
