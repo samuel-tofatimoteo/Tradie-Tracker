@@ -4,6 +4,14 @@ import { Job, Jobs } from '../../models/jobs'
 
 const rootUrl = '/api/v1/jobs'
 
+// Employee API calls
+
+export async function getAllJobsByEmpId(id: number) {
+  const res = await request.get(`${rootUrl}/employee/${id}`)
+  return res.body as Job[]
+}
+
+// OLD STUFF
 export async function getJobs(): Promise<Job[]> {
   const res = await request.get(`${rootUrl}/manager`)
   return res.body as Job[]
