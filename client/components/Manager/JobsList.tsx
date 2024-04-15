@@ -2,6 +2,7 @@ import MapMarker from '../MapMarker'
 import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
 import plus from '/images/plus.svg'
+import submitted from '/images/submittedJobs.svg'
 import ToggleButton from '../ToggleButton'
 
 function JobsList() {
@@ -19,6 +20,13 @@ function JobsList() {
       <>
         <Link to={`/create-job/manager`}>
           <img className="plus-icon" alt="plus-icon" src={plus}></img>
+        </Link>
+        <Link to={`/jobs/manager/complete`}>
+          <img
+            className="submitted-icon"
+            alt="submitted-icon"
+            src={submitted}
+          ></img>
         </Link>
         <h1>Job List for manager component</h1>
         {data.map((job) => (

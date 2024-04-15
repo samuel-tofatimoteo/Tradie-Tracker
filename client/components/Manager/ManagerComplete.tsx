@@ -14,7 +14,7 @@ export function ManagerComplete() {
   if (data) {
     return (
       <>
-        <h1>Job List for each employee - just named schedule for now</h1>
+        <h1>List of all Submitted Jobs</h1>
         <ul key="schedule">
           {data.map((job) => (
             <li key={job.id}>
