@@ -12,8 +12,12 @@ export async function addJobs(data: Jobs) {
 export async function deleteJobs(id: number) {
   return await db('jobs').where('id', id).del()
 }
-export async function updateJobs(id: number, data: Jobs) {
-  return await db('jobs').where('id', id).update(data)
+// export async function updateJobs(id: number, data: Jobs) {
+//   return await db('jobs').where('id', id).update(data)
+// }
+
+export async function updateJobs(data: Job) {
+  return await db('jobs').where('id', data.id).update(data)
 }
 export async function getCompletedJobs() {
   return await db('jobs').where('complete', true).select()

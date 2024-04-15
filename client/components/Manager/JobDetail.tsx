@@ -46,7 +46,7 @@ function JobDetail() {
     return (
       <>
         <form onSubmit={handleClick}>
-          Job Title:{' '}
+          Job Title:
           <input
             id="title"
             onChange={handleChange}
@@ -76,10 +76,11 @@ function JobDetail() {
           />
           <br></br>
           Description:
-          <input
-            onChange={handleChange}
+          <textarea
+            onChange={(e) =>
+              setFormState({ ...formState, description: e.target.value })
+            }
             value={formState.description}
-            type="text"
             name="description"
             placeholder={data.description}
           />
@@ -92,7 +93,7 @@ function JobDetail() {
             name="price"
             placeholder={data.price}
           />
-          <button>save</button>
+          <button type="submit">save</button>
         </form>
       </>
     )
