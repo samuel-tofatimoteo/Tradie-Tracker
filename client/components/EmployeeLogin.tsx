@@ -1,5 +1,5 @@
-import { FormEvent, SetStateAction, useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { SetStateAction, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function EmployeeLogin() {
   const [username, setUsername] = useState('')
