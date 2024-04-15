@@ -2,14 +2,6 @@ import express from 'express'
 import * as db from '../db/jobs'
 const router = express.Router()
 
-router.get('/manager', async (req, res) => {
-  try {
-    const data = await db.getJobs()
-    res.json(data)
-  } catch (e) {
-    console.log(e)
-  }
-})
 //manager can get all jobs created by the manager
 router.get('/manager', async (req, res) => {
   try {
