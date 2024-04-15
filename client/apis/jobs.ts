@@ -6,7 +6,7 @@ const rootUrl = '/api/v1/jobs'
 
 // Employee API calls
 
-export async function getAllJobsByEmpId(id: number): Promise<Job[]> {
+export async function getAllJobsByEmpId(id: number) {
   const res = await request.get(`${rootUrl}/employee/${id}`)
   return res.body as Job[]
 }

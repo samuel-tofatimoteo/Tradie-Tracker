@@ -47,7 +47,7 @@ function EmployeeLogin() {
             required
           />
         </div>
-        <Link to="/jobs/employee">
+        <Link to="/jobs/employee/1">
           <button>Login</button>
         </Link>
       </form>
