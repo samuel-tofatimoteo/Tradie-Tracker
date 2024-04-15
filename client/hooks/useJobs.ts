@@ -4,18 +4,36 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { JobReview } from '../../models/jobs.ts'
+import { Job, JobReview } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
+// Employee Hooks
+
+export function useAllJobsByEmpId(id: number) {
+  return useQuery({
+    queryKey: ['jobs', id],
+    queryFn: () => api.getAllJobsByEmpId(id),
+  })
+}
+
+//OLD STUFF
 export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
 
-export function useJobsById() {
+export function useJobById(id: number) {
   return useQuery({
-    queryKey: ['jobs'],
-    queryFn: (id: number) => api.getJobsById(id),
+    queryKey: ['jobs', id],
+    queryFn: () => api.getJobById(id),
+  })
+}
+
+export function useEditJobById() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (input: Job) => api.editJobById(input),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
 
@@ -26,17 +44,3 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
-
-// export function useFruitsMutation<TData = unknown, TVariables = unknown>(
-//   mutationFn: MutationFunction<TData, TVariables>
-// ) {
-//   const queryClient = useQueryClient()
-//   const mutation = useMutation({
-//     mutationFn,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ['fruits'] })
-//     },
-//   })
-
-//   return mutation
-// }

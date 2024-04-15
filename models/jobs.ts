@@ -4,7 +4,7 @@ export interface Jobs {
   location: string
   date: string
   time: string
-  complete: false
+  complete: boolean
   price: number
   worked_hours: number
   employee_id: number
@@ -15,7 +15,6 @@ export interface Jobs {
 export interface Job extends Jobs {
   id: number
 }
-
 export interface JobReview {
   review: string
   data: Job
