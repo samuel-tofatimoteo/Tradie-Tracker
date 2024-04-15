@@ -6,6 +6,7 @@ export interface Jobs {
   time: string
   complete: boolean
   price: number
+  review: string
   worked_hours: number
   employee_id: number
   client_id: number

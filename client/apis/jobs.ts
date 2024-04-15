@@ -11,7 +11,8 @@ export async function getAllJobsByEmpId(id: number) {
   return res.body as Job[]
 }
 
-// OLD STUFF
+// Manager API calls
+
 export async function getJobs(): Promise<Job[]> {
   const res = await request.get(`${rootUrl}/manager`)
   return res.body as Job[]
@@ -32,7 +33,11 @@ export function addReview(review: string, data: Jobs) {
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
 }
 
-
 export function createJob(data: Job) {
   return request.post(rootUrl).send(data)
+}
+
+export async function getCompletedJobs() {
+  const res = await request.get(`${rootUrl}/manager/complete`)
+  return res.body as Job[]
 }

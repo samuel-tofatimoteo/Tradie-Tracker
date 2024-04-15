@@ -17,7 +17,8 @@ export function useAllJobsByEmpId(id: number) {
   })
 }
 
-//OLD STUFF
+// Manager Hooks
+
 export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
@@ -42,5 +43,12 @@ export function useAddReview() {
   return useMutation({
     mutationFn: (input: JobReview) => api.addReview(input.review, input.data),
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
+  })
+}
+
+export function useCompletedJobs() {
+  return useQuery({
+    queryKey: ['jobs'],
+    queryFn: () => api.getCompletedJobs(),
   })
 }
