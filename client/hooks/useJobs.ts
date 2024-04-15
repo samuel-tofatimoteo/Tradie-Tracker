@@ -24,7 +24,7 @@ export function useJobs() {
 
 export function useJobById(id: number) {
   return useQuery({
-    queryKey: ['jobs', id],
+    queryKey: ['job', id],
     queryFn: () => api.getJobById(id),
   })
 }
