@@ -19,7 +19,7 @@ export async function getCompletedJobs() {
   return await db('jobs').where('complete', true).select()
 }
 export async function getJob(jobId: number) {
-  return await db('jobs').where('id', jobId).select()
+  return await db('jobs').where('id', jobId).select().first()
 }
 
 //employees
