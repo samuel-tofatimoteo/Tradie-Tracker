@@ -28,6 +28,11 @@ export async function editJobById(input: Job) {
   await request.patch(`${rootUrl}/manager/${id}`).send(input)
 }
 
+// export async function editJobById(id: number, data: Jobs) {
+//   // const id = input.id
+//   await request.patch(`${rootUrl}/manager/${id}`).send(data)
+// }
+
 export function addReview(review: string, data: Jobs) {
   const input = { review, ...data }
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
