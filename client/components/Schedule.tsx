@@ -1,58 +1,59 @@
 import { FormEvent, useState } from 'react'
 import MapMarker from './MapMarker'
-import { useAddReview } from '../hooks/useJobs'
+import { useAddReview, useAllJobsByEmpId } from '../hooks/useJobs'
+import { useParams } from 'react-router-dom'
 
 function Schedule() {
-  const jobs = [
-    {
-      id: 1,
-      title: 'title',
-      description: 'something',
-      location: '',
-      date: '11 July 2024',
-      time: '10:00',
-      complete: false,
-      price: 100,
-      review: 'good',
-      worked_hours: 2,
-      employee_id: 1,
-      client_id: 1,
-      manager_id: 1,
-    },
-    {
-      id: 2,
-      title: 'title',
-      description: 'something',
-      location: '',
-      date: 'fake date data',
-      time: '10:00',
-      complete: true,
-      price: 100,
-      review: 'good',
-      worked_hours: 2,
-      employee_id: 2,
-      client_id: 2,
-      manager_id: 1,
-    },
-    {
-      id: 3,
-      title: 'title',
-      description: 'something',
-      location: '',
-      date: '11 July 2024',
-      time: '10:00',
-      complete: false,
-      price: 100,
-      review: 'good',
-      worked_hours: 2,
-      employee_id: 3,
-      client_id: 3,
-      manager_id: 1,
-    },
-  ]
+  // const jobs = [
+  //   {
+  //     id: 1,
+  //     title: 'title',
+  //     description: 'something',
+  //     location: '',
+  //     date: '11 July 2024',
+  //     time: '10:00',
+  //     complete: false,
+  //     price: 100,
+  //     review: 'good',
+  //     worked_hours: 2,
+  //     employee_id: 1,
+  //     client_id: 1,
+  //     manager_id: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'title',
+  //     description: 'something',
+  //     location: '',
+  //     date: 'fake date data',
+  //     time: '10:00',
+  //     complete: true,
+  //     price: 100,
+  //     review: 'good',
+  //     worked_hours: 2,
+  //     employee_id: 2,
+  //     client_id: 2,
+  //     manager_id: 1,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'title',
+  //     description: 'something',
+  //     location: '',
+  //     date: '11 July 2024',
+  //     time: '10:00',
+  //     complete: false,
+  //     price: 100,
+  //     review: 'good',
+  //     worked_hours: 2,
+  //     employee_id: 3,
+  //     client_id: 3,
+  //     manager_id: 1,
+  //   },
+  // ]
 
-  const mutation = useAddReview()
-  const data = jobs[0]
+  // const mutation = useAddReview()
+  // const data = jobs[0]
   // const [formState, setFormState] = useState({
   //   review: '',
   //   data: {
@@ -84,29 +85,40 @@ function Schedule() {
     console.log('submit function is active')
   }
 
-  return (
-    <>
-      <h1>Job List for each employee - just named schedule for now</h1>
-      <ul key="schedule">
-        {jobs.map((job) => (
-          <li key={job.id}>
-            {job.title}, {job.date}, {job.time}, {job.location}
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                onChange={handleChange}
-                value={formState}
-                placeholder="put your review"
-                name="review"
-              />
-              <button>submit</button>
-            </form>
-          </li>
-        ))}
-      </ul>
-      <MapMarker />
-    </>
-  )
-}
+  const { id } = useParams()
+  const { data, isLoading, isError, error } = useAllJobsByEmpId(Number(id))
 
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+  if (isError) {
+    return <p>Error: {error?.message}</p>
+  }
+
+  if (data) {
+    return (
+      <>
+        <h1>Job List for each employee - just named schedule for now</h1>
+        <ul key="schedule">
+          {data.map((job) => (
+            <li key={job.id}>
+              {job.title}, {job.date}, {job.time}, {job.location}
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={formState}
+                  placeholder="put your review"
+                  name="review"
+                />
+                <button>submit</button>
+              </form>
+            </li>
+          ))}
+        </ul>
+        <MapMarker />
+      </>
+    )
+  }
+}
 export default Schedule
