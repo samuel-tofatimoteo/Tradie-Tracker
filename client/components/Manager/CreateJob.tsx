@@ -240,10 +240,12 @@ const CreateJob = () => {
             <label>
               Email:
               <input
+                type="email"
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
-                type="email"
-                placeholder=" Enter email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                placeholder="example123@gmail.com"
+                required
               />
             </label>
           </form>

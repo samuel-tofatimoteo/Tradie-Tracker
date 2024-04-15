@@ -20,3 +20,8 @@ export function addReview(review: string, data: Job) {
   const input = { review, ...data }
   return request.patch(rootUrl + '/job-list').send(input)
 }
+
+
+export function createJob(data: Job) {
+  return request.post(rootUrl).send(data)
+}
