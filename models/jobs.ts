@@ -15,6 +15,11 @@ export interface Jobs {
 export interface Job extends Jobs {
   id: number
 }
+
+export interface JobData {
+  id: number
+  data: Jobs
+}
 export interface JobReview {
   review: string
   data: Job
