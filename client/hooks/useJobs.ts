@@ -22,10 +22,11 @@ export function useJobById(id: number) {
 export function useEditJobById() {
   const qc = useQueryClient()
   return useMutation({
-    mutationFn: (input: JobData) => api.editJobById(input.id, input.data),
+    mutationFn: (input: Job) => api.editJobById(input),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
+
 export function useAddReview() {
   const client = useQueryClient()
   return useMutation({
@@ -33,17 +34,3 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
-
-// export function useFruitsMutation<TData = unknown, TVariables = unknown>(
-//   mutationFn: MutationFunction<TData, TVariables>
-// ) {
-//   const queryClient = useQueryClient()
-//   const mutation = useMutation({
-//     mutationFn,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ['fruits'] })
-//     },
-//   })
-
-//   return mutation
-// }
