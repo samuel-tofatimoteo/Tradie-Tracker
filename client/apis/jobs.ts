@@ -26,6 +26,7 @@ export async function editJobById(input: Job) {
   const id = input.id
   await request.patch(`${rootUrl}/manager/${id}`).send(input)
 }
+
 export function addReview(review: string, data: Jobs) {
   const input = { review, ...data }
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
