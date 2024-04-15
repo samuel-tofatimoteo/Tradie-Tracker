@@ -31,3 +31,8 @@ export function addReview(review: string, data: Jobs) {
   const input = { review, ...data }
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
 }
+
+
+export function createJob(data: Job) {
+  return request.post(rootUrl).send(data)
+}
