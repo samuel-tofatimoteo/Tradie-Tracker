@@ -84,6 +84,7 @@ const CreateJob = () => {
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             placeholder="Enter job title"
+            required
           />
         </label>
       </form>
@@ -95,6 +96,7 @@ const CreateJob = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter job description"
+            required
           />
         </label>
       </form>
@@ -106,6 +108,7 @@ const CreateJob = () => {
             value={dateTime}
             onChange={(e) => setDateTime(e.target.value)}
             type="datetime-local"
+            required
           />
         </label>
       </form>
@@ -246,6 +249,7 @@ const CreateJob = () => {
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
                 placeholder="Enter company name"
+                required
               />
             </label>
           </form>
@@ -263,6 +267,7 @@ const CreateJob = () => {
                       onChange={(e) => setStreet(e.target.value)}
                       value={street}
                       placeholder="E.g: '123 Example St'"
+                      required
                     />
                   </label>
                   <label>
@@ -271,6 +276,7 @@ const CreateJob = () => {
                       onChange={(e) => setCity(e.target.value)}
                       value={city}
                       placeholder="E.g: Auckland"
+                      required
                     />
                   </label>
                   <label>
@@ -279,6 +285,7 @@ const CreateJob = () => {
                       onChange={(e) => setCountry(e.target.value)}
                       value={country}
                       placeholder="E.g: New Zealand"
+                      required
                     />
                   </label>
                   <label>
@@ -287,6 +294,7 @@ const CreateJob = () => {
                       onChange={(e) => setPostalCode(e.target.value)}
                       value={postalCode}
                       placeholder="E.g: 2016"
+                      required
                     />
                   </label>
                 </>
@@ -301,6 +309,7 @@ const CreateJob = () => {
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 placeholder="Enter contact name"
+                required
               />
             </label>
           </form>

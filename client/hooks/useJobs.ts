@@ -8,6 +8,15 @@ import { Job, JobReview } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
+// Manager add job
+export function useCreateJob() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (input: Job) => api.createJob(input),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
+  })
+}
+
 // Employee Hooks
 
 export function useAllJobsByEmpId(id: number) {
@@ -44,3 +53,5 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
+
+
