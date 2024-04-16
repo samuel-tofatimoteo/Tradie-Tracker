@@ -4,7 +4,7 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { Job, JobData, JobReview } from '../../models/jobs.ts'
+import { Job, JobReview } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
@@ -17,15 +17,14 @@ export function useAllJobsByEmpId(id: number) {
   })
 }
 
-// Manager Hooks
-
+//OLD STUFF
 export function useJobs() {
   return useQuery({ queryKey: ['jobs'], queryFn: () => getJobs() })
 }
 
 export function useJobById(id: number) {
   return useQuery({
-    queryKey: ['jobs', id],
+    queryKey: ['job', id],
     queryFn: () => api.getJobById(id),
   })
 }
@@ -38,14 +37,6 @@ export function useEditJobById() {
   })
 }
 
-// export function useEditJobById() {
-//   const qc = useQueryClient()
-//   return useMutation({
-//     mutationFn: (input: JobData) => api.editJobById(input.id, input.data),
-//     onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
-//   })
-// }
-
 export function useAddReview() {
   const client = useQueryClient()
   return useMutation({
@@ -53,10 +44,9 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
-
 export function useCompletedJobs() {
   return useQuery({
-    queryKey: ['jobs'],
+    queryKey: ['CompJobs'],
     queryFn: () => api.getCompletedJobs(),
   })
 }
