@@ -50,6 +50,17 @@ function JobsList() {
           <ul key={job.id}>
             <li>
               {job.title}, {job.date}, {job.time}, {job.location}
+              {/* Selected employee */}
+              {selectedEmployees[job.id] !== null && (
+                <div>
+                  Selected Employee:{' '}
+                  {
+                    employees.find(
+                      (emp) => emp.id === selectedEmployees[job.id],
+                    )?.name
+                  }
+                </div>
+              )}
               {/* needs onclick to show detail of the job */}
               <ToggleButton job={job} />
               {/* links to edit page for each job */}
