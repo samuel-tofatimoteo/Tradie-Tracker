@@ -9,14 +9,20 @@ const CreateJob = () => {
   const [dateTime, setDateTime] = useState('')
   // Company details
   const [companyName, setCompanyName] = useState('')
-  const [address, setAddress] = useState('')
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+  const [country, setCountry] = useState('')
   const [contactName, setContactName] = useState('')
   const [contactPhone, setContactPhone] = useState('')
   const [contactEmail, setContactEmail] = useState('')
   //Company interface
   type Company = {
     name: string
-    address: string
+    street: string
+    city: string
+    country: string
+    postalCode: string
     contactName: string
     contactPhone: string
     contactEmail: string
@@ -24,28 +30,49 @@ const CreateJob = () => {
   //Company data
   const companies = [
     {
+      id: 1,
       name: 'Costco',
-      address: 'Address 1',
-      contactName: 'Contact 1',
-      contactPhone: 'Phone 1',
-      contactEmail: 'Email 1',
+      street: '123 Street',
+      city: 'Auckland',
+      country: 'New Zealand',
+      postalCode: '2010',
+      contactName: 'Name lastName',
+      contactPhone: '012-3456-7890',
+      contactEmail: 'namelastname@example.com',
     },
     {
+      id: 2,
       name: 'H&M',
-      address: 'Address 2',
-      contactName: 'Contact 2',
-      contactPhone: 'Phone 2',
-      contactEmail: 'Email 2',
+      street: '84 Street',
+      city: 'Auckland',
+      country: 'New Zealand',
+      postalCode: '2016',
+      contactName: 'Name lastName',
+      contactPhone: '012-3456-7890',
+      contactEmail: 'namelastname@example.com',
     },
     {
+      id: 3,
       name: 'Company 3',
-      address: 'Address 3',
-      contactName: 'Contact 3',
-      contactPhone: 'Phone 3',
-      contactEmail: 'Email 3',
+      street: '3 Street',
+      city: 'Auckland',
+      country: 'New Zealand',
+      postalCode: '2019',
+      contactName: 'Name lastName',
+      contactPhone: '012-3456-7890',
+      contactEmail: 'namelastname@example.com',
     },
   ]
 
+  // Reset selected company if checkbox is unchecked
+  const handleOccurringClientChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setOccurringClient(event.target.checked)
+    if (!event.target.checked) {
+      setSelectedCompany(null)
+    }
+  }
   return (
     <>
       {/* Always show */}
@@ -56,7 +83,7 @@ const CreateJob = () => {
           <input
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
-            placeholder=" Enter job title"
+            placeholder="Enter job title"
           />
         </label>
       </form>
@@ -67,7 +94,7 @@ const CreateJob = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder=" Enter job description"
+            placeholder="Enter job description"
           />
         </label>
       </form>
@@ -89,7 +116,7 @@ const CreateJob = () => {
         <input
           type="checkbox"
           checked={occurringClient}
-          onChange={(e) => setOccurringClient(e.target.checked)}
+          onChange={handleOccurringClientChange}
         />
       </label>
 
@@ -130,7 +157,52 @@ const CreateJob = () => {
               <form>
                 <label>
                   Address:
-                  <input value={selectedCompany.address} disabled />
+                  <label>
+                    Street:
+                    <input
+                      onChange={(e) => setStreet(e.target.value)}
+                      value={selectedCompany ? selectedCompany.street : street}
+                      placeholder="E.g: 123 Main St"
+                      disabled
+                    />
+                  </label>
+                  <label>
+                    City:
+                    <input
+                      onChange={(e) => setCity(e.target.value)}
+                      value={selectedCompany ? selectedCompany.city : city}
+                      placeholder="E.g: Auckland"
+                      disabled
+                    />
+                  </label>
+                  <label>
+                    Country:
+                    <input
+                      onChange={(e) => setCountry(e.target.value)}
+                      value={
+                        selectedCompany ? selectedCompany.country : country
+                      }
+                      placeholder="E.g: New Zealand"
+                      disabled
+                    />
+                  </label>
+                  <label>
+                    Postal Code:
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        const value = e.target.value
+                        setPostalCode(value)
+                      }}
+                      value={
+                        selectedCompany
+                          ? selectedCompany.postalCode
+                          : postalCode
+                      }
+                      placeholder="E.g: 2016"
+                      disabled
+                    />
+                  </label>
                 </label>
               </form>
               {/* Contact Name */}
@@ -173,7 +245,7 @@ const CreateJob = () => {
               <input
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
-                placeholder=" Enter company name"
+                placeholder="Enter company name"
               />
             </label>
           </form>
@@ -181,11 +253,44 @@ const CreateJob = () => {
           <form>
             <label>
               Address:
-              <input
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder=" Enter company address"
-              />
+              {selectedCompany ? (
+                <input value={selectedCompany.street} disabled />
+              ) : (
+                <>
+                  <label>
+                    Street:
+                    <input
+                      onChange={(e) => setStreet(e.target.value)}
+                      value={street}
+                      placeholder="E.g: '123 Example St'"
+                    />
+                  </label>
+                  <label>
+                    City:
+                    <input
+                      onChange={(e) => setCity(e.target.value)}
+                      value={city}
+                      placeholder="E.g: Auckland"
+                    />
+                  </label>
+                  <label>
+                    Country:
+                    <input
+                      onChange={(e) => setCountry(e.target.value)}
+                      value={country}
+                      placeholder="E.g: New Zealand"
+                    />
+                  </label>
+                  <label>
+                    Postal Code:
+                    <input
+                      onChange={(e) => setPostalCode(e.target.value)}
+                      value={postalCode}
+                      placeholder="E.g: 2016"
+                    />
+                  </label>
+                </>
+              )}
             </label>
           </form>
           {/* Contact Name */}
@@ -195,7 +300,7 @@ const CreateJob = () => {
               <input
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
-                placeholder=" Enter contact name"
+                placeholder="Enter contact name"
               />
             </label>
           </form>
@@ -230,7 +335,7 @@ const CreateJob = () => {
                 }}
                 type="tel"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                placeholder=" 123-456-7890"
+                placeholder="123-456-7890"
                 required
               />
             </label>
