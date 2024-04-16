@@ -44,3 +44,4 @@ export async function getCompletedJobs() {
   const res = await request.get(`${rootUrl}/manager/complete`)
   return res.body as Job[]
 }
+//employee jobs filter

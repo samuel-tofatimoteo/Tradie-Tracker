@@ -1,95 +1,79 @@
-import { useState, FormEvent } from 'react'
-import { useParams } from 'react-router-dom'
-import { Job } from '../../../models/jobs'
-import { useEditJobById } from '../../hooks/useJobs'
+import React, { useState } from 'react'
+import MapMarker from '../MapMarker'
+import { useJobs } from '../../hooks/useJobs'
+import { Link } from 'react-router-dom'
+import plus from '/images/plus.svg'
+import ToggleButton from '../ToggleButton'
+import submitted from '/images/submittedJobs.svg'
 
-type Props = {
-  data: Job
-}
+const employees = [
+  { id: 1, name: 'Lionel Messi' },
+  { id: 2, name: 'Johnnie Walker' },
+  { id: 3, name: 'Lucas' },
+]
 
-function Form(props: Props) {
-  const { data } = props
-  const id = Number(useParams().id)
+function JobsList() {
+  const { data, isLoading, isError, error } = useJobs()
+  const [selectedEmployee, setSelectedEmployee] = useState<number | null>(null)
 
-  const [formState, setFormState] = useState({
-    id: id,
-    title: data.title,
-    description: data.description,
-    location: data.location,
-    date: data.date,
-    time: data.time,
-    price: data.price,
-    complete: data.complete,
-    worked_hours: data.worked_hours,
-    employee_id: data.employee_id,
-    client_id: data.client_id,
-    manager_id: data.manager_id,
-  })
-
-  const mutation = useEditJobById()
-  function handleClick(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    mutation.mutate(formState)
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+  if (isError) {
+    return <p>Error: {error?.message}</p>
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.currentTarget
-    setFormState((prev) => ({ ...prev, [name]: value }))
-    console.log(formState)
+  const handleAssignEmployee = (jobId: number, employeeId: number | null) => {
+    // Your logic to assign the selected employee to the job
+    console.log(`Assign employee ${employeeId} to job ${jobId}`)
   }
 
-  return (
-    <>
-      <form onSubmit={handleClick}>
-        Job Title:
-        <input
-          id="title"
-          onChange={handleChange}
-          value={formState.title}
-          type="text"
-          name="title"
-          placeholder={data.title}
-        />
-        <br></br>
-        Due Date:
-        <input
-          onChange={handleChange}
-          value={formState.date}
-          type="text"
-          name="date"
-          placeholder={data.date}
-        />
-        <br></br>
-        Location:
-        <input
-          onChange={handleChange}
-          value={formState.location}
-          type="text"
-          name="location"
-          placeholder={data.location}
-        />
-        <br></br>
-        Description:
-        <textarea
-          onChange={(e) =>
-            setFormState({ ...formState, description: e.target.value })
-          }
-          value={formState.description}
-          name="description"
-          placeholder={data.description}
-        />
-        <br></br>
-        Price:
-        <input
-          onChange={handleChange}
-          value={formState.price}
-          type="number"
-          name="price"
-          // placeholder={data.price}
-        />
-        <button type="submit">save</button>
-      </form>
-    </>
-  )
+  if (data) {
+    return (
+      <>
+        <Link to={`/jobs/manager/complete`}>
+          <img
+            className="submitted-icon"
+            alt="submitted-icon"
+            src={submitted}
+          ></img>
+        </Link>
+        <Link to={`/create-job/manager`}>
+          <img className="plus-icon" alt="plus-icon" src={plus}></img>
+        </Link>
+        <h1>Job List for manager component</h1>
+        {data.map((job) => (
+          <ul key="jobs">
+            <li key={job.id}>
+              {job.title}, {job.date}, {job.time}, {job.location}
+              {/* needs onclick to show detail of the job */}
+              <ToggleButton job={job} />
+              {/* links to edit page for each job */}
+              <Link to={`/jobs/manager/${job.id}`}>
+                <button>edit job detail</button>
+              </Link>
+              {/* Dropdown to select employee */}
+              <select
+                value={selectedEmployee ?? job.employee_id}
+                onChange={(e) => setSelectedEmployee(parseInt(e.target.value))}
+              >
+                {employees.map((employee) => (
+                  <option key={employee.id} value={employee.id}>
+                    {employee.name}
+                  </option>
+                ))}
+              </select>
+              {/* Button to assign selected employee */}
+              <button onClick={() => handleAssignEmployee(job.id, selectedEmployee)}>
+                Assign Employee
+              </button>
+            </li>
+          </ul>
+        ))}
+        <MapMarker />
+      </>
+    )
+  }
 }
-export default Form
+
+export default JobsList

@@ -1,17 +1,35 @@
+import React, { useState } from 'react'
 import MapMarker from '../MapMarker'
 import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
 import plus from '/images/plus.svg'
 import ToggleButton from '../ToggleButton'
 import submitted from '/images/submittedJobs.svg'
+
+const employees = [
+  { id: 1, name: 'Lionel Messi' },
+  { id: 2, name: 'Johnnie Walker' },
+  { id: 3, name: 'Lucas' },
+]
+
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
+  const [selectedEmployees, setSelectedEmployees] = useState<{
+    [key: number]: number | null
+  }>({})
 
   if (isLoading) {
     return <p>Loading...</p>
   }
   if (isError) {
     return <p>Error: {error?.message}</p>
+  }
+
+  const handleAssignEmployee = (jobId: number, employeeId: number | null) => {
+    setSelectedEmployees((prevState) => ({
+      ...prevState,
+      [jobId]: employeeId,
+    }))
   }
 
   if (data) {
@@ -29,8 +47,8 @@ function JobsList() {
         </Link>
         <h1>Job List for manager component</h1>
         {data.map((job) => (
-          <ul key="jobs">
-            <li key={job.id}>
+          <ul key={job.id}>
+            <li>
               {job.title}, {job.date}, {job.time}, {job.location}
               {/* needs onclick to show detail of the job */}
               <ToggleButton job={job} />
@@ -38,7 +56,20 @@ function JobsList() {
               <Link to={`/jobs/manager/${job.id}`}>
                 <button>edit job detail</button>
               </Link>
-              <button key={job.employee_id}>assign employee</button>
+              {/* Dropdown to select employee */}
+              <select
+                value={selectedEmployees[job.id] ?? job.employee_id}
+                onChange={(e) =>
+                  handleAssignEmployee(job.id, parseInt(e.target.value))
+                }
+              >
+                <option value={null}>Select Employee</option>
+                {employees.map((employee) => (
+                  <option key={employee.id} value={employee.id}>
+                    {employee.name}
+                  </option>
+                ))}
+              </select>
             </li>
           </ul>
         ))}
