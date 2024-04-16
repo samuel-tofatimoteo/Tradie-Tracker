@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { useEditJobById, useJobById } from '../hooks/useJobs'
+import { useEditJobById, useJobById } from '../../hooks/useJobs'
 
 import { useParams } from 'react-router-dom'
 
@@ -12,17 +12,17 @@ function JobDetail() {
   const mutation = useEditJobById()
   const [formState, setFormState] = useState({
     id: id,
-    title: '',
-    description: '',
-    location: '',
-    date: '',
-    time: '',
-    price: 0,
-    complete: false,
-    worked_hours: 0,
-    employee_id: 0,
-    client_id: 0,
-    manager_id: 0,
+    title: data.title,
+    description: data.description,
+    location: data.location,
+    date: data.date,
+    time: data.time,
+    price: data.price,
+    complete: data.complete,
+    worked_hours: data.worked_hours,
+    employee_id: data.employee_id,
+    client_id: data.client_id,
+    manager_id: data.manager_id,
   })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -46,7 +46,7 @@ function JobDetail() {
     return (
       <>
         <form onSubmit={handleClick}>
-          Job Title:{' '}
+          Job Title:
           <input
             id="title"
             onChange={handleChange}
@@ -76,10 +76,11 @@ function JobDetail() {
           />
           <br></br>
           Description:
-          <input
-            onChange={handleChange}
+          <textarea
+            onChange={(e) =>
+              setFormState({ ...formState, description: e.target.value })
+            }
             value={formState.description}
-            type="text"
             name="description"
             placeholder={data.description}
           />
@@ -92,7 +93,7 @@ function JobDetail() {
             name="price"
             placeholder={data.price}
           />
-          <button>save</button>
+          <button type="submit">save</button>
         </form>
       </>
     )

@@ -1,8 +1,8 @@
-import MapMarker from './MapMarker'
-import { useJobs } from '../hooks/useJobs'
+import MapMarker from '../MapMarker'
+import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import ToggleButton from './ToggleButton'
+import plus from '/images/plus.svg'
+import ToggleButton from '../ToggleButton'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
@@ -17,6 +17,9 @@ function JobsList() {
   if (data) {
     return (
       <>
+        <Link to={`/create-job/manager`}>
+          <img className="plus-icon" alt="plus-icon" src={plus}></img>
+        </Link>
         <h1>Job List for manager component</h1>
         {data.map((job) => (
           <ul key="jobs">
