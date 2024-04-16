@@ -39,3 +39,9 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
+export function useCompletedJobs() {
+  return useQuery({
+    queryKey: ['CompJobs'],
+    queryFn: () => api.getCompletedJobs(),
+  })
+}

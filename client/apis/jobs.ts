@@ -1,4 +1,4 @@
-import { root } from 'postcss'
+// import { root } from 'postcss'
 import request from 'superagent'
 import { Job, Jobs } from '../../models/jobs'
 
@@ -39,4 +39,8 @@ export function addReview(review: string, data: Jobs) {
 
 export function createJob(data: Job) {
   return request.post(rootUrl).send(data)
+}
+export async function getCompletedJobs() {
+  const res = await request.get(`${rootUrl}/manager/complete`)
+  return res.body as Job[]
 }
