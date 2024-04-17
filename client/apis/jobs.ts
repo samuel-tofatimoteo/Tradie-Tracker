@@ -37,12 +37,11 @@ export function addReview(review: string, data: Jobs) {
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
 }
 
-
 export async function createJob(data: Jobs) {
   await request.post(`${rootUrl}/manager`).send(data)
+}
 
 export async function getCompletedJobs() {
   const res = await request.get(`${rootUrl}/manager/complete`)
   return res.body as Job[]
-
 }
