@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Job } from '../../../models/jobs'
 import { useEditJobById } from '../../hooks/useJobs'
 
@@ -26,16 +26,17 @@ function Form(props: Props) {
     manager_id: data.manager_id,
   })
 
+  const navigate = useNavigate()
   const mutation = useEditJobById()
   function handleClick(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     mutation.mutate(formState)
+    navigate('/jobs/manager')
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
     setFormState((prev) => ({ ...prev, [name]: value }))
-    console.log(formState)
   }
 
   return (
@@ -55,7 +56,16 @@ function Form(props: Props) {
         <input
           onChange={handleChange}
           value={formState.date}
-          type="text"
+          type="date"
+          name="date"
+          placeholder={data.date}
+        />
+        <br></br>
+        Time:
+        <input
+          onChange={handleChange}
+          value={formState.date}
+          type="time"
           name="date"
           placeholder={data.date}
         />
