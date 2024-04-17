@@ -2,6 +2,14 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -30,14 +38,23 @@ link {
 /* ----------------------------------------------------- */
 /* heading container */
 .header {
-  font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 6rem;
+  align-items: center;
 }
+.welcome-heading{
+  font-size: 4rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px 3px #ffff00; /* Yellow shadow */
+}
+
+
+
 /* subtitle */
 .welcome-text {
   font-size: 1.5rem;
-  padding-left: 9.6rem;
+  margin-bottom: 6rem;
 }
 /* I am text */
 .I-am-text {
