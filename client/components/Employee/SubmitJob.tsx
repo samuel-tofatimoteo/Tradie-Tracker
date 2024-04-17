@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useEditJobByEmpId } from '../../hooks/useJobs'
 
 import { useState } from 'react'
+import EmployeeNavBar from './EmployeeNavbar'
 
 function SubmitJob() {
   const employeeId = Number(useParams().employeeId)
@@ -45,6 +46,7 @@ function SubmitJob() {
 
   return (
     <>
+      <EmployeeNavBar />
       <form onSubmit={handleSubmit}>
         Review:
         <input

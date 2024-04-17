@@ -52,7 +52,7 @@ const MapMarker: React.FC<MapMarkerProps> = () => {
   const loadGoogleMaps = () => {
     return new Promise<void>((resolve, reject) => {
       const script = document.createElement('script')
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=geometry`
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=geometry&language=en`
       script.async = true
       script.defer = true
       script.onload = () => resolve()
