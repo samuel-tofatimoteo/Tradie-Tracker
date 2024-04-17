@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import ToggleButton from '../ToggleButton'
 import ManagerNavbar from './ManagerNavbar'
 import DeleteButton from './DeleteButton'
+import Assign from './Assign'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
@@ -30,6 +31,7 @@ function JobsList() {
               <Link to={`/jobs/manager/${job.id}`}>
                 <button>edit job detail</button>
               </Link>
+              <Assign id={job.id} />
               <button key={job.employee_id}>assign employee</button>
               <DeleteButton id={job.id} />
             </li>
