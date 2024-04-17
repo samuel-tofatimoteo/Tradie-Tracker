@@ -4,7 +4,7 @@ import {
   useQueryClient,
   MutationFunction,
 } from '@tanstack/react-query'
-import { Job, JobReview } from '../../models/jobs.ts'
+import { Job, JobReview, Jobs } from '../../models/jobs.ts'
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
@@ -12,8 +12,8 @@ import * as api from '../apis/jobs.ts'
 export function useCreateJob() {
   const qc = useQueryClient()
   return useMutation({
-    mutationFn: (input: Job) => api.createJob(input),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['jobs'] }),
+    mutationFn: (input: Jobs) => api.createJob(input),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['newJob'] }),
   })
 }
 
@@ -53,5 +53,3 @@ export function useAddReview() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
-
-

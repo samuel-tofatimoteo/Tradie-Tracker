@@ -32,7 +32,6 @@ export function addReview(review: string, data: Jobs) {
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
 }
 
-
-export function createJob(data: Job) {
-  return request.post(rootUrl).send(data)
+export async function createJob(data: Jobs) {
+  await request.post(`${rootUrl}/manager`).send(data)
 }

@@ -17,7 +17,7 @@ function JobsList() {
   if (data) {
     return (
       <>
-        <Link to={`/create-job/manager`}>
+        <Link to={`/manager/add`}>
           <img className="plus-icon" alt="plus-icon" src={plus}></img>
         </Link>
         <h1>Job List for manager component</h1>
