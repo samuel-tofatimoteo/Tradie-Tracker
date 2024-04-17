@@ -1,6 +1,7 @@
 import { useJobById } from '../../hooks/useJobs'
 import { useParams } from 'react-router-dom'
 import Form from './Form'
+import ManagerNavbar from './ManagerNavbar'
 
 function JobDetail() {
   const id = Number(useParams().id)
@@ -15,7 +16,12 @@ function JobDetail() {
   }
 
   if (data) {
-    return <Form {...{ data }} />
+    return (
+      <>
+        <ManagerNavbar />
+        <Form {...{ data }} />
+      </>
+    )
   }
 }
 

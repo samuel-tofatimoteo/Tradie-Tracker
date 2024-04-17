@@ -2,6 +2,7 @@ import { SetStateAction, useState } from 'react'
 import { useCompletedJobs } from '../../hooks/useJobs'
 import MapMarker from '../MapMarker'
 import Search from '../Search'
+import ManagerNavbar from './ManagerNavbar'
 
 export function ManagerComplete() {
   const { data, isLoading, isError, error } = useCompletedJobs()
@@ -26,6 +27,7 @@ export function ManagerComplete() {
 
     return (
       <>
+        <ManagerNavbar />
         <h1>List of all Submitted Jobs</h1>
         <div>
           <Search

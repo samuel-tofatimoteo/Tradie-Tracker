@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import MapMarker from '../MapMarker'
 import { useAddReview, useAllJobsByEmpId } from '../../hooks/useJobs'
 import { useParams } from 'react-router-dom'
+import EmployeeNavBar from './EmployeeNavbar'
 
 function Schedule() {
   const [formState, setFormState] = useState('')
@@ -31,7 +32,8 @@ function Schedule() {
     console.log(data)
     return (
       <>
-        <h1>Job List for each employee - just named schedule for now</h1>
+        <EmployeeNavBar />
+        <h1>Current jobs:</h1>
         <ul key="schedule">
           {data.map((job) => (
             <li key={job.id}>

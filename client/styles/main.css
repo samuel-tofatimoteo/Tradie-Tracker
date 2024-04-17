@@ -1,17 +1,24 @@
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+textarea {
+  border: 2px solid #ccc;
+  resize: none;
+}
+
 button {
   border: 1px solid black;
 }
 
 #map {
   float: right;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
 
 link {
@@ -66,24 +73,74 @@ link {
 /* ----------------------------------------------------- */
 /* Navbar */
 /* ----------------------------------------------------- */
+.nav-container{
+  margin-bottom: 2rem;
+}
 
-.bg-color {
+.manager-bg-color {
+  display: flex;
+  justify-content: space-between; /* Distribute space evenly between the logo/h1 and icons */
+  align-items: center; /* Align items vertically */
   background-color: #6ba0d6;
-  padding-bottom: 5rem;
+  border: solid 1px #ffff99cc;;
+  padding: 10px 20px; 
+  box-shadow: 0 0 30px 15px #ffff99cc;
 }
 
-.h1-color {
-  margin-left: 10%;
+.employee-bg-color {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #6AB76A;
+  border: solid 1px #ffff99cc;;
+  padding: 10px 20px; 
+  box-shadow: 0 0 30px 15px #ffff99cc;
 }
 
-/* ----------------------------------------------------- */
-/* TEMP Navbar icons */
-/* ----------------------------------------------------- */
-.plus-icon {
-  width: 40px;
-  height: auto;
+
+.h1-nav-link {
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 0rem 3rem; 
+  color: black;
+  text-decoration: none;
 }
-.submitted-icon {
-  width: 40px;
+
+.logo-container {
+  display: flex;
+  align-items: center; 
+}
+.crane-logo {
+  width: 100px;
   height: auto;
+  object-fit: contain;
+  padding: 10px;
+  margin-right: 1.5rem;
+  position: relative; /* Set position to relative */
+  z-index: 1; /* Set z-index to bring the crane logo to the front */
+  top: -5px; 
+}
+.bricks-logo {
+  width: 120px;
+  height: auto;
+  position: absolute; /* Set position to absolute */
+  top: 120px; /* Adjust as needed */
+  left:30px; /* Adjust as needed */
+  z-index: 2; /* Set z-index higher than crane logo to bring bricks logo in front */
+  clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);
+}
+
+.nav-icon {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  object-fit: contain;
+  padding: 10px;
+  margin-left: 2rem;
+}
+.nav-icon:hover {
+  background-color: #fefea6;
+  cursor: pointer;
+  transition: 0.7s;
 }

@@ -1,9 +1,9 @@
 import MapMarker from '../MapMarker'
 import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
-import plus from '/images/plus.svg'
 import ToggleButton from '../ToggleButton'
-import submitted from '/images/submittedJobs.svg'
+import ManagerNavbar from './ManagerNavbar'
+
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
 
@@ -17,16 +17,7 @@ function JobsList() {
   if (data) {
     return (
       <>
-        <Link to={`/jobs/manager/complete`}>
-          <img
-            className="submitted-icon"
-            alt="submitted-icon"
-            src={submitted}
-          ></img>
-        </Link>
-        <Link to={`/create-job/manager`}>
-          <img className="plus-icon" alt="plus-icon" src={plus}></img>
-        </Link>
+        <ManagerNavbar />
         <h1>Job List for manager component</h1>
         {data.map((job) => (
           <ul key="jobs">
