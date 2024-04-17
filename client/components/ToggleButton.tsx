@@ -18,7 +18,10 @@ function ToggleButton({ job }: Props) {
 
       {isShow && (
         <p>
-          {job.description}, {job.price}
+          Job Description: {job.description}
+          <br></br>Price: {job.price}
+          <br></br>
+          Complete? {job.complete ? '⭕️' : '❌'}
         </p>
       )}
     </>
