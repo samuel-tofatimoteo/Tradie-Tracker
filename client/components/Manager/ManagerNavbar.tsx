@@ -20,7 +20,7 @@ function ManagerNavbar() {
           </Link>
         </div>
         <div className="icon-container">
-          <Link to={`/create-job/manager`}>
+          <Link to={`/manager/add`}>
             <img className="nav-icon" alt="plus-icon" src={plus}></img>
           </Link>
           <img className="nav-icon" alt="notify-icon" src={notify}></img>
