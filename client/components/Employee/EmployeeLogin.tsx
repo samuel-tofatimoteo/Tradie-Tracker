@@ -52,7 +52,17 @@ function EmployeeLogin() {
         </Link>
       </form>
       <p>
-        Do not have an account? <Link to="/signup">Sign up</Link>
+        Do not have an account?{' '}
+        <button
+          onClick={() =>
+            window.open(
+              'https://unsplash.com/photos/brown-brick-wall-rhaS97NhnHg',
+            )
+          }
+          style={{ textDecoration: 'underline', cursor: 'pointer' }}
+        >
+          Sign up
+        </button>
       </p>
     </div>
   )
