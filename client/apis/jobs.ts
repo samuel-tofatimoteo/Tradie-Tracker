@@ -1,6 +1,6 @@
 // import { root } from 'postcss'
 import request from 'superagent'
-import { ApiInput, EditJob, Job, Jobs } from '../../models/jobs'
+import { ApiInput, Job, Jobs } from '../../models/jobs'
 
 const rootUrl = '/api/v1/jobs'
 
@@ -46,11 +46,6 @@ export async function editJobById(input: Job) {
   await request.patch(`${rootUrl}/manager/${id}`).send(input)
 }
 
-// export async function editJobById(id: number, data: Jobs) {
-//   // const id = input.id
-//   await request.patch(`${rootUrl}/manager/${id}`).send(data)
-// }
-
 export function addReview(review: string, data: Jobs) {
   const input = { review, ...data }
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
@@ -63,4 +58,8 @@ export async function createJob(data: Jobs) {
 export async function getCompletedJobs() {
   const res = await request.get(`${rootUrl}/manager/complete`)
   return res.body as Job[]
+}
+
+export async function deleteJob(id: number) {
+  await request.delete(`${rootUrl}/manager/${id}`)
 }

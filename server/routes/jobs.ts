@@ -67,17 +67,6 @@ router.get('/manager/:id', async (req, res) => {
   }
 })
 
-//manager can update all jobs, selecting the by job id
-// router.patch('/manager/:id', async (req, res) => {
-//   try {
-//     const id = Number(req.params.id)
-//     await db.updateJobs(id, req.body)
-//     res.sendStatus(204)
-//   } catch (error) {
-//     console.error(error)
-//     res.sendStatus(500)
-//   }
-// })
 router.patch('/manager/:id', async (req, res) => {
   try {
     await db.updateJobs(req.body)
@@ -172,7 +161,7 @@ router.post('/managers', async (req, res) => {
   }
 })
 //manager can delete job selecting the job by job id
-router.delete('/managers/:managerId/:id', async (req, res) => {
+router.delete('/manager/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
     await db.deleteJobs(id)
@@ -182,25 +171,5 @@ router.delete('/managers/:managerId/:id', async (req, res) => {
     res.sendStatus(500)
   }
 })
-//-------------------------------------------------------------------
-
-// router.patch('/managers/:managerId/jobs/:jobId', async (req, res) => {
-//   try {
-//     const id = Number(req.params)
-//     await db.updateJobs(id, req.body)
-//     res.sendStatus(204)
-//   } catch (error) {
-//     console.error(error)
-//     res.sendStatus(500)
-//   }
-// })
-
-//employees jobs routers
-// router.get('/employees', async (req, res) => {
-//   const data = await db.getJobs()
-//   res.json(data)
-// })
-
-//employee can update job by job ID, going to the other page to update
 
 export default router

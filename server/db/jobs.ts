@@ -69,3 +69,7 @@ export async function updateManagersJob(
     .where('id', jobId)
     .update(data)
 }
+
+export async function delJob(id: number) {
+  await db('jobs').where({ id }).del()
+}

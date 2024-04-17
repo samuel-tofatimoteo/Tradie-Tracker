@@ -76,3 +76,11 @@ export function useCompletedJobs() {
     queryFn: () => api.getCompletedJobs(),
   })
 }
+
+export function useDeleteJob() {
+  const client = useQueryClient()
+  return useMutation({
+    mutationFn: (id: number) => api.deleteJob(id),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['delJob'] }),
+  })
+}
