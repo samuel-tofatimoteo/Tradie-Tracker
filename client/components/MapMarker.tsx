@@ -5,34 +5,24 @@ interface Position {
   lng: number
 }
 
-const MapMarker: React.FC = () => {
+interface MapMarkerProps {
+  locations: string[]
+}
+
+const MapMarker: React.FC<MapMarkerProps> = () => {
   useEffect(() => {
     const initMap = async () => {
       const locations: Position[] = [
         // put the data - now hardcoded
-        { lat: -31.56391, lng: 147.154312 },
-        { lat: -33.718234, lng: 150.363181 },
-        { lat: -33.727111, lng: 150.371124 },
-        { lat: -33.848588, lng: 151.209834 },
-        { lat: -33.851702, lng: 151.216968 },
-        { lat: -34.671264, lng: 150.863657 },
-        { lat: -35.304724, lng: 148.662905 },
-        { lat: -36.817685, lng: 175.699196 },
-        { lat: -36.828611, lng: 175.790222 },
-        { lat: -37.75, lng: 145.116667 },
-        { lat: -37.759859, lng: 145.128708 },
-        { lat: -37.765015, lng: 145.133858 },
-        { lat: -37.770104, lng: 145.143299 },
-        { lat: -37.7737, lng: 145.145187 },
-        { lat: -37.774785, lng: 145.137978 },
-        { lat: -37.819616, lng: 144.968119 },
-        { lat: -38.330766, lng: 144.695692 },
-        { lat: -39.927193, lng: 175.053218 },
-        { lat: -41.330162, lng: 174.865694 },
-        { lat: -42.734358, lng: 147.439506 },
-        { lat: -42.734358, lng: 147.501315 },
-        { lat: -42.735258, lng: 147.438 },
-        { lat: -43.999792, lng: 170.463352 },
+        { lat: -36.7660918, lng: 174.7267817 },
+        { lat: -36.7716377, lng: 174.713434 },
+        { lat: -36.8827032, lng: 174.6331554 },
+        { lat: -36.7705578, lng: 174.7275945 },
+        { lat: -36.851687, lng: 174.7832322 },
+        { lat: -36.9383626, lng: 174.652653 },
+        { lat: -36.8786769, lng: 174.8361916 },
+        { lat: -36.9096579, lng: 174.6610737 },
+        { lat: 36.9111394, lng: 174.6103638 },
       ]
 
       // Load Google Maps API
@@ -41,7 +31,7 @@ const MapMarker: React.FC = () => {
       const map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
-          zoom: 4,
+          zoom: 11,
           center: locations[0],
         },
       )
