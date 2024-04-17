@@ -1,7 +1,22 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { EditJob, Job, JobReview } from '../../models/jobs.ts'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  MutationFunction,
+} from '@tanstack/react-query'
+import { EditJob, Job, JobReview, Jobs } from '../../models/jobs.ts'
+
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
+
+// Manager add job
+export function useCreateJob() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (input: Jobs) => api.createJob(input),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['newJob'] }),
+  })
+}
 
 // Employee Hooks
 
