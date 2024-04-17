@@ -32,7 +32,6 @@ function JobsList() {
                 <button>edit job detail</button>
               </Link>
               <Assign id={job.id} />
-              <button key={job.employee_id}>assign employee</button>
               <DeleteButton id={job.id} />
             </li>
           </ul>
