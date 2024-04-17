@@ -24,3 +24,15 @@ export interface JobReview {
   review: string
   data: Job
 }
+
+export interface EditJob {
+  complete: boolean
+
+  review: string
+  worked_hours: number
+}
+export interface ApiInput {
+  employeeId: number
+  jobId: number
+  data: EditJob
+}
