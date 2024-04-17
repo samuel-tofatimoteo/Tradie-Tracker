@@ -45,7 +45,11 @@ export async function updateJobByEmpId(
     .where('id', jobId)
     .update(data)
 }
-
+// export async function updateJobByEmpId(data: Jobs) {
+//   return await db('jobs')
+//     .join('employee', 'jobs.employee_id', 'employee.id')
+//     .update(data)
+// }
 // OLD FUNCTIONS MIGHT DEL LATER :P
 
 export async function getManagersJob(managerId: number, jobId: number) {

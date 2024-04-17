@@ -12,11 +12,11 @@ router.get('/manager', async (req, res) => {
   }
 })
 //manager can create jobs
-router.post('/manager/create', async (req, res) => {
+router.post('/manager', async (req, res) => {
   try {
     const data = req.body
     await db.addJobs(data)
-    res.sendStatus(204)
+    res.sendStatus(201)
   } catch (error) {
     console.error(error)
     res.sendStatus(500)
@@ -114,7 +114,7 @@ router.get('/employee/:employeeId/:jobId', async (req, res) => {
   }
 })
 
-//employee can edit the jobs assigned to the employee
+// employee can edit the jobs assigned to the employee
 router.patch('/employee/:employeeId/:jobId', async (req, res) => {
   try {
     const employeeId = Number(req.params.employeeId)
@@ -127,6 +127,17 @@ router.patch('/employee/:employeeId/:jobId', async (req, res) => {
     res.sendStatus(500)
   }
 })
+// router.patch('/manager', async (req, res) => {
+//   try {
+//     const data = req.body
+//     await db.updateJobByEmpId(data)
+//     res.sendStatus(204)
+//   } catch (error) {
+//     console.error(error)
+//     res.sendStatus(500)
+//   }
+// })
+//
 
 //UP THERE ARE THE ROUTES THAT ARE BEEN USED IN THE APP
 //manager can get the jobs created by the manager individually, by job id
