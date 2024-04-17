@@ -10,6 +10,23 @@
   height: 90vh;
 }
 
+input[type="text"], input[type="date"], input[type="time"], input[type="number"], input[type="password"], textarea {
+  width: 300px;
+  height: 30px;
+  padding: 3px 20px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  margin: 10px 0;
+  outline: none;
+  box-shadow: none;
+  font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus, input[type="number"]:focus, input[type="password"]:focus, textarea:focus {
+  border: 1px solid #4d90fe;
+  box-shadow: 0 0 8px rgba(77, 144, 254, 0.2);
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -27,6 +44,11 @@ button {
 
 #map {
   float: right;
+  border: 10px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; 
+  margin-right: 3rem;
 }
 
 link {
@@ -105,7 +127,6 @@ link {
   padding: 10px 20px; 
   box-shadow: 0 0 30px 15px #ffff99cc;
 }
-
 .employee-bg-color {
   display: flex;
   justify-content: space-between; 
@@ -115,8 +136,6 @@ link {
   padding: 10px 20px; 
   box-shadow: 0 0 30px 15px #ffff99cc;
 }
-
-
 .h1-nav-link {
   background-color: white;
   border-radius: 1.5rem;
@@ -125,9 +144,6 @@ link {
   text-decoration: none;
 }
 
-.h1-nav:hover {
-  box-shadow: 120px 80px 40px 20px #ffff99cc;
-}
 
 .logo-container {
   display: flex;
@@ -153,6 +169,7 @@ link {
   clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);
 }
 
+
 .nav-icon {
   width: 50px;
   height: 50px;
@@ -166,4 +183,40 @@ link {
   background-color: #fefea6;
   cursor: pointer;
   transition: 0.7s;
+}
+
+/* ----------------------------------------------------- */
+/* Schedule */
+/* ----------------------------------------------------- */
+.layout-schedule {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-content {
+  flex: 1;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.map {
+  flex: 1;
+}
+
+/* ----------------------------------------------------- */
+/* Job List */
+/* ----------------------------------------------------- */
+.layout-jobList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-content {
+  flex: 1;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.map {
+  flex: 1;
 }

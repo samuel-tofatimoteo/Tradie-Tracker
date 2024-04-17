@@ -18,22 +18,26 @@ function JobsList() {
     return (
       <>
         <ManagerNavbar />
-        <h1>Job List for manager component</h1>
-        {data.map((job) => (
-          <ul key="jobs">
-            <li key={job.id}>
-              {job.title}, {job.date}, {job.time}, {job.location}
-              {/* needs onclick to show detail of the job */}
-              <ToggleButton job={job} />
-              {/* links to edit page for each job */}
-              <Link to={`/jobs/manager/${job.id}`}>
-                <button>edit job detail</button>
-              </Link>
-              <button key={job.employee_id}>assign employee</button>
-            </li>
-          </ul>
-        ))}
-        <MapMarker />
+        <div className="layout-jobList">
+          <div className="left-content">
+            <h1>Job List for manager component</h1>
+            {data.map((job) => (
+              <ul key="jobs">
+                <li key={job.id}>
+                  {job.title}, {job.date}, {job.time}, {job.location}
+                  {/* needs onclick to show detail of the job */}
+                  <ToggleButton job={job} />
+                  {/* links to edit page for each job */}
+                  <Link to={`/jobs/manager/${job.id}`}>
+                    <button>edit job detail</button>
+                  </Link>
+                  <button key={job.employee_id}>assign employee</button>
+                </li>
+              </ul>
+            ))}
+          </div>
+          <MapMarker />
+        </div>
       </>
     )
   }

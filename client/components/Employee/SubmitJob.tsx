@@ -18,7 +18,13 @@ function SubmitJob() {
   }
 
   if (data) {
-    return <SubmitJobForm data={data} />
+    return (
+      <>
+        <div className="layout">
+          <SubmitJobForm data={data} />
+        </div>
+      </>
+    )
   }
 }
 
