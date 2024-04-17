@@ -12,11 +12,11 @@ router.get('/manager', async (req, res) => {
   }
 })
 //manager can create jobs
-router.post('/manager/create', async (req, res) => {
+router.post('/manager', async (req, res) => {
   try {
     const data = req.body
     await db.addJobs(data)
-    res.sendStatus(204)
+    res.sendStatus(201)
   } catch (error) {
     console.error(error)
     res.sendStatus(500)
