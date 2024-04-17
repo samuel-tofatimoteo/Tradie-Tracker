@@ -1,26 +1,17 @@
 import { FormEvent, useState } from 'react'
 import MapMarker from '../MapMarker'
+
 import { useAddReview, useAllJobsByEmpId } from '../../hooks/useJobs'
 import { useParams } from 'react-router-dom'
 import EmployeeNavBar from './EmployeeNavbar'
 
+import { useAllJobsByEmpId } from '../../hooks/useJobs'
+import { Link, useParams } from 'react-router-dom'
+
+
 function Schedule() {
-  const [formState, setFormState] = useState('')
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const review = e.currentTarget.value
-    setFormState(review)
-  }
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setFormState('')
-    // mutation.mutate(review, data)
-    console.log('submit function is active')
-  }
-
   const { id } = useParams()
   const { data, isLoading, isError, error } = useAllJobsByEmpId(Number(id))
-
   if (isLoading) {
     return <p>Loading...</p>
   }
@@ -38,16 +29,9 @@ function Schedule() {
           {data.map((job) => (
             <li key={job.id}>
               {job.title}, {job.date}, {job.time}, {job.location}
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  value={formState}
-                  placeholder="put your review"
-                  name="review"
-                />
-                <button>submit</button>
-              </form>
+              <Link to={`/jobs/employee/${id}/${job.id}`}>
+                <button>Submit Job</button>
+              </Link>
             </li>
           ))}
         </ul>
