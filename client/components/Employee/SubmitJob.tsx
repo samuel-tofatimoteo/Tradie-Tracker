@@ -46,9 +46,6 @@ function SubmitJob() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* Existing input fields */}
-        ...
-        {/* New input fields for review and worked hours */}
         Review:
         <input
           onChange={handleChange}

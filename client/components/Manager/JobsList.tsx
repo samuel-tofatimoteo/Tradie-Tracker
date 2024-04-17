@@ -20,16 +20,14 @@ function JobsList() {
     return (
       <>
         <ManagerNavbar />
-        <h1>Job List for manager component</h1>
+        <h1>Job Dashboard</h1>
         {data.map((job) => (
           <ul key="jobs">
             <li key={job.id}>
               {job.title}, {job.date}, {job.time}, {job.location}
-              {/* needs onclick to show detail of the job */}
               <ToggleButton job={job} />
-              {/* links to edit page for each job */}
               <Link to={`/jobs/manager/${job.id}`}>
-                <button>edit job detail</button>
+                <button>Edit job detail</button>
               </Link>
               <Assign id={job.id} />
               <DeleteButton id={job.id} />

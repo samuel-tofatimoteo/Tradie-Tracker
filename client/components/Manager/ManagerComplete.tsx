@@ -28,7 +28,7 @@ export function ManagerComplete() {
     return (
       <>
         <ManagerNavbar />
-        <h1>List of all Submitted Jobs</h1>
+        <h1>Completed Jobs</h1>
         <div>
           <Search
             search={search}
@@ -39,8 +39,14 @@ export function ManagerComplete() {
         <ul key="schedule">
           {data.map((job) => (
             <li key={job.id}>
-              {job.title},{job.date},{job.time},{job.location},{job.employee_id}
-              ,{job.worked_hours},{job.complete}
+              <br></br>
+              Title: {job.title}
+              <br></br>Date: {job.date}
+              <br></br>Time: {job.time}
+              <br></br>Location: {job.location}
+              <br></br>
+              Worked Hours: {job.worked_hours}
+              <br></br>Complete: Yes<br></br>
             </li>
           ))}
         </ul>
