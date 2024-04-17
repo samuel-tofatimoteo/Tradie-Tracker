@@ -64,9 +64,9 @@ function Form(props: Props) {
         Time:
         <input
           onChange={handleChange}
-          value={formState.date}
+          value={formState.time}
           type="time"
-          name="date"
+          name="time"
           placeholder={data.date}
         />
         <br></br>
