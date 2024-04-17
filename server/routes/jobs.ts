@@ -68,17 +68,25 @@ router.get('/manager/:id', async (req, res) => {
 })
 
 //manager can update all jobs, selecting the by job id
-router.patch('/manager/:id/edit', async (req, res) => {
+// router.patch('/manager/:id', async (req, res) => {
+//   try {
+//     const id = Number(req.params.id)
+//     await db.updateJobs(id, req.body)
+//     res.sendStatus(204)
+//   } catch (error) {
+//     console.error(error)
+//     res.sendStatus(500)
+//   }
+// })
+router.patch('/manager/:id', async (req, res) => {
   try {
-    const id = Number(req.params.id)
-    await db.updateJobs(id, req.body)
+    await db.updateJobs(req.body)
     res.sendStatus(204)
   } catch (error) {
     console.error(error)
     res.sendStatus(500)
   }
 })
-
 // EMPLOYEE ROUTES
 
 //employee can see the jobs assigned to the employee

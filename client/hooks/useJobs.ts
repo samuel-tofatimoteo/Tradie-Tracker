@@ -1,3 +1,4 @@
+
 import {
   useQuery,
   useMutation,
@@ -5,6 +6,7 @@ import {
   MutationFunction,
 } from '@tanstack/react-query'
 import { Job, JobReview, Jobs } from '../../models/jobs.ts'
+
 import { getJobs } from '../apis/jobs.ts'
 import * as api from '../apis/jobs.ts'
 
@@ -33,7 +35,7 @@ export function useJobs() {
 
 export function useJobById(id: number) {
   return useQuery({
-    queryKey: ['job', id],
+    queryKey: ['job'],
     queryFn: () => api.getJobById(id),
   })
 }
@@ -51,5 +53,11 @@ export function useAddReview() {
   return useMutation({
     mutationFn: (input: JobReview) => api.addReview(input.review, input.data),
     onSuccess: () => client.invalidateQueries({ queryKey: ['jobs'] }),
+  })
+}
+export function useCompletedJobs() {
+  return useQuery({
+    queryKey: ['CompJobs'],
+    queryFn: () => api.getCompletedJobs(),
   })
 }

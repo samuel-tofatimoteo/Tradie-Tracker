@@ -1,4 +1,4 @@
-import { root } from 'postcss'
+// import { root } from 'postcss'
 import request from 'superagent'
 import { Job, Jobs } from '../../models/jobs'
 
@@ -27,11 +27,22 @@ export async function editJobById(input: Job) {
   await request.patch(`${rootUrl}/manager/${id}`).send(input)
 }
 
+// export async function editJobById(id: number, data: Jobs) {
+//   // const id = input.id
+//   await request.patch(`${rootUrl}/manager/${id}`).send(data)
+// }
+
 export function addReview(review: string, data: Jobs) {
   const input = { review, ...data }
   return request.patch(`${rootUrl}/manager/job-list`).send(input)
 }
 
+
 export async function createJob(data: Jobs) {
   await request.post(`${rootUrl}/manager`).send(data)
+
+export async function getCompletedJobs() {
+  const res = await request.get(`${rootUrl}/manager/complete`)
+  return res.body as Job[]
+
 }
