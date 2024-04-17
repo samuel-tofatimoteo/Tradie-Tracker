@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { SetStateAction, useState } from 'react'
 import MapMarker from '../MapMarker'
 import { useJobs } from '../../hooks/useJobs'
 import { Link } from 'react-router-dom'
@@ -14,6 +14,7 @@ const employees = [
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
+  const [search, setSearch] = useState('')
   const [selectedEmployees, setSelectedEmployees] = useState<{
     [key: number]: number | null
   }>({})
@@ -25,6 +26,11 @@ function JobsList() {
     return <p>Error: {error?.message}</p>
   }
 
+  const handleSearchChange = (event: {
+    target: { value: SetStateAction<string> }
+  }) => {
+    setSearch(event.target.value)
+  }
   const handleAssignEmployee = (jobId: number, employeeId: number | null) => {
     setSelectedEmployees((prevState) => ({
       ...prevState,
@@ -33,6 +39,10 @@ function JobsList() {
   }
 
   if (data) {
+    const filteredData = data.filter((job) =>
+      job.title.toLowerCase().includes(search.toLowerCase()),
+    )
+
     return (
       <>
         <Link to={`/jobs/manager/complete`}>
@@ -46,7 +56,18 @@ function JobsList() {
           <img className="plus-icon" alt="plus-icon" src={plus}></img>
         </Link>
         <h1>Job List for manager component</h1>
-        {data.map((job) => (
+        <div>
+          <label htmlFor="search">
+            Search jobs by job title:
+            <input
+              type="text"
+              id="search"
+              value={search}
+              onChange={handleSearchChange}
+            />
+          </label>
+        </div>
+        {filteredData.map((job) => (
           <ul key={job.id}>
             <li>
               {job.title}, {job.date}, {job.time}, {job.location}
