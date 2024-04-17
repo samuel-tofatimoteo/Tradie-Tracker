@@ -1,7 +1,6 @@
-import { FormEvent, useState } from 'react'
 import MapMarker from '../MapMarker'
 
-import { useAddReview, useAllJobsByEmpId } from '../../hooks/useJobs'
+import { useAllJobsByEmpId } from '../../hooks/useJobs'
 import { Link, useParams } from 'react-router-dom'
 import EmployeeNavBar from './EmployeeNavbar'
 
@@ -19,7 +18,6 @@ function Schedule() {
   }
 
   if (data) {
-    console.log(data)
     return (
       <>
         <EmployeeNavBar />

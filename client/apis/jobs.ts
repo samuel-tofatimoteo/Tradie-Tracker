@@ -18,15 +18,12 @@ export async function getJobByEmpId(employeeId: number, jobId: number) {
 
 export async function editJobByEmpId(input: ApiInput) {
   const employeeId = input.employeeId
-  console.log(employeeId)
-
   const jobId = input.jobId
   const data = {
     review: input.review,
     worked_hours: input.worked_hours,
     complete: input.complete,
   }
-  console.log(employeeId, jobId, data)
   await request.patch(`${rootUrl}/employee/${employeeId}/${jobId}`).send(data)
 }
 

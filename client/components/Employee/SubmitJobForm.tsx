@@ -6,13 +6,11 @@ import { useParams } from 'react-router-dom'
 
 type Props = {
   data: EditJob
-  // onSubmit: any
 }
 
 function SubmitJobForm(props: Props) {
   const { data } = props
   const employeeId = Number(useParams().employeeId)
-  console.log(employeeId)
 
   const jobId = Number(useParams().jobId)
   const editJobMutation = useEditJobByEmpId()
