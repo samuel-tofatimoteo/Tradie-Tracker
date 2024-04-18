@@ -54,9 +54,8 @@ function SubmitJobForm(props: Props) {
     <>
       <form onSubmit={handleSubmit}>
         {/* Existing input fields */}
-        ...
         {/* New input fields for review and worked hours */}
-        Review:
+        <label htmlFor="Review">Review:</label>
         <input
           onChange={handleChange}
           value={formState.review}
@@ -65,7 +64,7 @@ function SubmitJobForm(props: Props) {
           type="text"
         />
         <br />
-        Worked Hours:
+        <label htmlFor="Work Hours">Worked Hours:</label>
         <input
           onChange={handleChange}
           value={formState.worked_hours}

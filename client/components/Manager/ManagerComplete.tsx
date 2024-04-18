@@ -28,29 +28,31 @@ export function ManagerComplete() {
     return (
       <>
         <ManagerNavbar />
-        <h1>Completed Jobs</h1>
-        <div>
-          <Search
-            search={search}
-            setSearch={setSearch}
-            onChange={handleSearchChange}
-          />
+        <div className="layout-jobList">
+          <div className="left-content">
+            <h1>Completed Jobs</h1>
+            <div>
+              <Search
+                search={search}
+                setSearch={setSearch}
+                onChange={handleSearchChange}
+              />
+            </div>
+            <ul key="schedule">
+              <div className="job-card">
+                {data.map((job) => (
+                  <li key={job.id}>
+                    <div className="title">{job.title}</div>
+                    <div className="date">,{job.date}</div>,{job.time},
+                    <div className="location">{job.location}</div>,
+                    <div className="edit">{job.worked_hours}</div>
+                  </li>
+                ))}
+              </div>
+            </ul>
+          </div>
+          <MapMarker />
         </div>
-        <ul key="schedule">
-          {data.map((job) => (
-            <li key={job.id}>
-              <br></br>
-              Title: {job.title}
-              <br></br>Date: {job.date}
-              <br></br>Time: {job.time}
-              <br></br>Location: {job.location}
-              <br></br>
-              Worked Hours: {job.worked_hours}
-              <br></br>Complete: Yes<br></br>
-            </li>
-          ))}
-        </ul>
-        <MapMarker />
       </>
     )
   }

@@ -18,18 +18,29 @@ function Schedule() {
     return (
       <>
         <EmployeeNavBar />
-        <h1>Tasks</h1>
-        <ul key="schedule">
-          {data.map((job) => (
-            <li key={job.id}>
-              {job.title}, {job.date}, {job.time}, {job.location}
-              <Link to={`/jobs/employee/${id}/${job.id}`}>
-                <button>Submit Completion</button>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <MapMarker />
+        <div className="layout-schedule">
+          <div className="left-content">
+            <h1>Current jobs</h1>
+            <ul key="schedule">
+              {data.map((job) => (
+                <div className="job-card-employee" key={job.id}>
+                  <div className="title-employee">{job.title}</div>
+                  <div className="date-employee">{job.date}</div>
+                  <div className="time-employee">{job.time}</div>
+                  <div className="location-employee">
+                    {job.location || 'Address'}
+                  </div>
+                  <div className="submit-job-employee">
+                    <Link to={`/jobs/employee/${id}/${job.id}`}>
+                      <button>Submit Completion</button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </ul>
+          </div>
+          <MapMarker />
+        </div>
       </>
     )
   }

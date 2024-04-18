@@ -33,7 +33,7 @@ function NewJob() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="form-label">
           Job Title:
           <input
             name="title"

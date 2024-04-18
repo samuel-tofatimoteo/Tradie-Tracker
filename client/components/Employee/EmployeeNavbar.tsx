@@ -14,13 +14,17 @@ function EmployeeNavBar() {
             <img className="crane-logo" alt="logo" src={logo}></img>
             <img className="bricks-logo" alt="logo" src={bricksLogo}></img>
           </Link>
-          <Link className="h1-nav-link" to={`/jobs/employee/${id}`}>
+          <Link className="h1-nav-link" to={`/jobs/employee/1`}>
             <h1 className="h1-nav">Tradie Tracker</h1>
           </Link>
         </div>
         <div className="icon-container">
-          <img className="nav-icon" alt="notify-icon" src={notify}></img>
-          <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          <Link to={`/notifications`}>
+            <img className="nav-icon" alt="notify-icon" src={notify}></img>
+          </Link>
+          <Link to={`/jobs/employee/:id/profile`}>
+            <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          </Link>
         </div>
       </div>
     </div>

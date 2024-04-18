@@ -47,54 +47,56 @@ function SubmitJob() {
   return (
     <>
       <EmployeeNavBar />
-      <form onSubmit={handleSubmit}>
-        Review:
-        <input
-          onChange={handleChange}
-          value={formState.review}
-          name="review"
-          placeholder="Enter review"
-          type="text"
-        />
-        <br />
-        Worked Hours:
-        <input
-          onChange={handleChange}
-          value={formState.worked_hours}
-          type="number"
-          name="worked_hours"
-          placeholder="Enter worked hours"
-        />
-        <br />
-        {/* New radio button for job completion */}
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="complete"
-              value="true"
-              checked={formState.complete === true}
-              onChange={handleRadioChange}
-            />
-            Complete
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="complete"
-              value="false"
-              checked={formState.complete === false}
-              onChange={handleRadioChange}
-            />
-            Incomplete
-          </label>
-        </div>
-        {/* End of radio button */}
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="layout">
+        <form onSubmit={handleSubmit}>
+          Review:
+          <input
+            onChange={handleChange}
+            value={formState.review}
+            name="review"
+            placeholder="Enter review"
+            type="text"
+          />
+          <br />
+          Worked Hours:
+          <input
+            onChange={handleChange}
+            value={formState.worked_hours}
+            type="number"
+            name="worked_hours"
+            placeholder="Enter worked hours"
+          />
+          <br />
+          {/* New radio button for job completion */}
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="complete"
+                value="true"
+                checked={formState.complete === true}
+                onChange={handleRadioChange}
+              />
+              Complete
+            </label>
+          </div>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="complete"
+                value="false"
+                checked={formState.complete === false}
+                onChange={handleRadioChange}
+              />
+              Incomplete
+            </label>
+          </div>
+          {/* End of radio button */}
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   )
 }
