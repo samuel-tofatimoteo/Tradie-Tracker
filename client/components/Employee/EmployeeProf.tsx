@@ -6,7 +6,7 @@ function EmployeeProf() {
       <EmployeeNavBar />
       <div className="layout">
         <div>
-          <h1>Profile</h1>
+          <h1>My Profile</h1>
           <h2>Name</h2>
           <p>Sam</p>
           <h2>Bio</h2>
@@ -18,7 +18,7 @@ function EmployeeProf() {
           <h2>Phone</h2>
           <p>021 685 685 685</p>
           <h2>Company</h2>
-          <p>Big boy Builders.co</p>
+          <p>Builder.co.nz</p>
         </div>
       </div>
     </>

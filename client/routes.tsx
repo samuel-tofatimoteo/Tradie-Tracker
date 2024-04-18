@@ -10,6 +10,7 @@ import { ManagerComplete } from './components/Manager/ManagerComplete.tsx'
 import SubmitJob from './components/Employee/SubmitJob.tsx'
 import NotificationPage from './components/NotificationPage.tsx'
 import EmployeeProf from './components/Employee/EmployeeProf.tsx'
+import ManagerProf from './components/Manager/MangerProf.tsx'
 
 export default createRoutesFromElements(
   <Route path="/" element={<App />}>
@@ -23,5 +24,6 @@ export default createRoutesFromElements(
     <Route path="/jobs/employee/:employeeId/:jobId" element={<SubmitJob />} />
     <Route path="/notifications" element={<NotificationPage />} />
     <Route path="/jobs/employee/:id/profile" element={<EmployeeProf />} />
+    <Route path="/jobs/manager/:id/profile" element={<ManagerProf />} />
   </Route>,
 )

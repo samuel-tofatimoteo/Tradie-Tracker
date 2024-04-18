@@ -29,7 +29,9 @@ function ManagerNavbar() {
           <Link to={`/jobs/manager/complete`}>
             <img className="nav-icon" alt="complete-icon" src={complete}></img>
           </Link>
-          <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          <Link to={`/jobs/manager/:id/profile`}>
+            <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          </Link>
         </div>
       </div>
     </div>
