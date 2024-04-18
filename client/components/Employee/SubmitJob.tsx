@@ -3,6 +3,7 @@
 import { useParams } from 'react-router-dom'
 import { useJobByEmpId } from '../../hooks/useJobs'
 import SubmitJobForm from './SubmitJobForm'
+import EmployeeNavBar from './EmployeeNavbar'
 
 function SubmitJob() {
   const employeeId = Number(useParams().employeeId)
@@ -20,6 +21,7 @@ function SubmitJob() {
   if (data) {
     return (
       <>
+        <EmployeeNavBar />
         <div className="layout">
           <SubmitJobForm data={data} />
         </div>

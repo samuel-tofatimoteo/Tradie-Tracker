@@ -6,7 +6,7 @@ import ManagerNavbar from './ManagerNavbar'
 
 function JobsList() {
   const { data, isLoading, isError, error } = useJobs()
-
+  console.log(data)
   if (isLoading) {
     return <p>Loading...</p>
   }
@@ -22,18 +22,21 @@ function JobsList() {
           <div className="left-content">
             <h1>Job List for manager component</h1>
             {data.map((job) => (
-              <ul key="jobs">
-                <li key={job.id}>
-                  {job.title}, {job.date}, {job.time}, {job.location}
-                  {/* needs onclick to show detail of the job */}
-                  <ToggleButton job={job} />
-                  {/* links to edit page for each job */}
+              <div className="job-card" key={job.id}>
+                <div className="title">{job.title}</div>
+                <div className="time">{job.time}</div>
+                <div className="location">{job.location || 'Address'}</div>
+                <ToggleButton job={job} />
+                <div className="edit">
                   <Link to={`/jobs/manager/${job.id}`}>
-                    <button>edit job detail</button>
+                    <button className="edit-job-btn">Edit job</button>
                   </Link>
-                  <button key={job.employee_id}>assign employee</button>
-                </li>
-              </ul>
+                </div>
+                <div className="assign">
+                  <button key={job.employee_id}>Employee</button>
+                </div>
+                <div className="date">{job.date}</div>
+              </div>
             ))}
           </div>
           <MapMarker />

@@ -19,7 +19,9 @@ function JobDetail() {
     return (
       <>
         <ManagerNavbar />
-        <Form {...{ data }} />
+        <div className="layout">
+          <Form {...{ data }} />
+        </div>
       </>
     )
   }
