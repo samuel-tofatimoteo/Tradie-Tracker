@@ -42,9 +42,9 @@ function Assign({ id }: Id) {
           ))}
         </select>
         {/* Button to assign selected employee */}
-        <button onClick={() => handleAssignEmployee(data.id, selectedEmployee)}>
+        {/* <button onClick={() => handleAssignEmployee(data.id, selectedEmployee)}>
           Assign Employee
-        </button>
+        </button> */}
       </>
     )
   }

@@ -30,7 +30,7 @@ export async function seed(knex) {
       price: 100,
       review: 'good',
       worked_hours: 2,
-      employee_id: 2,
+      employee_id: 1,
       client_id: 2,
       manager_id: 1,
     },

@@ -26,6 +26,8 @@ function JobsList() {
             {data.map((job) => (
               <div className="job-card" key={job.id}>
                 <div className="title">{job.title}</div>
+                <div className="date">{job.date}</div>
+
                 <div className="time">{job.time}</div>
                 <div className="location">{job.location || 'Address'}</div>
                 <ToggleButton job={job} />

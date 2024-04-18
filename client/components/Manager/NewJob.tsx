@@ -70,7 +70,7 @@ function NewJob() {
           time:
           <input
             name="time"
-            type="text"
+            type="time"
             value={formState.time}
             onChange={handleChange}
             placeholder="e.g ---"
