@@ -39,12 +39,16 @@ export function ManagerComplete() {
               />
             </div>
             <ul key="schedule">
-              {data.map((job) => (
-                <li key={job.id}>
-                  {job.title},{job.date},{job.time},{job.location},
-                  {job.employee_id},{job.worked_hours},{job.complete}
-                </li>
-              ))}
+              <div className="job-card">
+                {data.map((job) => (
+                  <li key={job.id}>
+                    <div className="title">{job.title}</div>
+                    <div className="date">,{job.date}</div>,{job.time},
+                    <div className="location">{job.location}</div>,
+                    <div className="edit">{job.worked_hours}</div>
+                  </li>
+                ))}
+              </div>
             </ul>
           </div>
           <MapMarker />
