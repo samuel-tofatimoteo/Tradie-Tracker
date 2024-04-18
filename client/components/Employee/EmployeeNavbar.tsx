@@ -22,7 +22,9 @@ function EmployeeNavBar() {
           <Link to={`/notifications`}>
             <img className="nav-icon" alt="notify-icon" src={notify}></img>
           </Link>
-          <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          <Link to={`/jobs/employee/:id/profile`}>
+            <img className="nav-icon" alt="profile-icon" src={profile}></img>
+          </Link>
         </div>
       </div>
     </div>
