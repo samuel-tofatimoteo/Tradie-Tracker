@@ -19,7 +19,9 @@ function EmployeeNavBar() {
           </Link>
         </div>
         <div className="icon-container">
-          <img className="nav-icon" alt="notify-icon" src={notify}></img>
+          <Link to={`/notifications`}>
+            <img className="nav-icon" alt="notify-icon" src={notify}></img>
+          </Link>
           <img className="nav-icon" alt="profile-icon" src={profile}></img>
         </div>
       </div>

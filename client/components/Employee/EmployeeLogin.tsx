@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from 'react'
 import { Link } from 'react-router-dom'
+import NotificationPage from '../NotificationPage'
 
 function EmployeeLogin() {
   const [username, setUsername] = useState('')
@@ -53,17 +54,7 @@ function EmployeeLogin() {
           </Link>
         </form>
         <p>
-          Do not have an account?{' '}
-          <button
-            onClick={() =>
-              window.open(
-                'https://unsplash.com/photos/brown-brick-wall-rhaS97NhnHg',
-              )
-            }
-            style={{ textDecoration: 'underline', cursor: 'pointer' }}
-          >
-            Sign up
-          </button>
+          Do not have an account? <button>Sign up</button>
         </p>
       </div>
     </div>

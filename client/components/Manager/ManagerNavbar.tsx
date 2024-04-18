@@ -23,7 +23,9 @@ function ManagerNavbar() {
           <Link to={`/manager/add`}>
             <img className="nav-icon" alt="plus-icon" src={plus}></img>
           </Link>
-          <img className="nav-icon" alt="notify-icon" src={notify}></img>
+          <Link to={`/notifications`}>
+            <img className="nav-icon" alt="notify-icon" src={notify}></img>
+          </Link>
           <Link to={`/jobs/manager/complete`}>
             <img className="nav-icon" alt="complete-icon" src={complete}></img>
           </Link>
